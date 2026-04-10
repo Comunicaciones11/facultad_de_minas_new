@@ -1,0 +1,14 @@
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# Dependencias (por si luego usas npm)
+node_modules/
+
+# Archivos del sistema
+Thumbs.db
+
+# Variables de entorno (por si luego agregas)
+.env
