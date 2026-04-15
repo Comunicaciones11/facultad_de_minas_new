@@ -1,0 +1,2778 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dirección de Bienestar</title>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a,
+        button,
+        input,
+        textarea,
+        span,
+        .elementor-widget-button .elementor-button {
+            font-family: "Ancizar sans" !important;
+        }
+
+        :root {
+            --blue: #00468a;
+            --blue-dark: #00376c;
+            --yellow: #f9ae00;
+            --gray-900: #1f2937;
+            --gray-700: #374151;
+            --gray-600: #4b5563;
+            --gray-500: #6b7280;
+            --gray-100: #f3f4f6;
+            --shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
+            --radius-xl: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+            color: #2f3a4a;
+            background: #fff;
+            font-size: 18px;
+        }
+
+        #bienestar-page,
+        #bienestar-page * {
+            font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .site-header {
+            width: 100%;
+            background: #4b4b4b;
+            color: #f3f4f6;
+        }
+
+        .top-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 24px;
+            font-size: 14px;
+            background: #4f4f4f;
+        }
+
+        .strip-links a {
+            margin-right: 18px;
+            opacity: 0.9;
+        }
+
+        .strip-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social a {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 12px;
+        }
+
+        .main-nav {
+            display: grid;
+            grid-template-columns: 230px 1fr 260px;
+            gap: 18px;
+            align-items: center;
+            padding: 14px 24px;
+            background: linear-gradient(90deg, rgba(63, 63, 63, 0.95), rgba(80, 80, 80, 0.85));
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #3f3f3f;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            line-height: 1.05;
+            font-size: 11px;
+            letter-spacing: 0.4px;
+        }
+
+        .brand-text strong {
+            font-size: 16px;
+            display: block;
+        }
+
+        .nav-center {
+            color: #fff;
+        }
+
+        .site-title {
+            color: var(--yellow);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .primary-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-weight: 600;
+            font-size: 14px;
+            align-items: center;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 8px;
+            background: transparent;
+            border: none;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .dropdown-trigger::after {
+            content: "▼";
+            font-size: 10px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 220px;
+            background: #3f3f3f;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 8px;
+            display: none;
+            z-index: 20;
+            box-shadow: var(--shadow);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .dropdown.open .dropdown-menu {
+            display: block;
+        }
+
+        .option-modal {
+            position: fixed;
+            max-width: 260px;
+            background: #5b5b5b;
+            color: #ffffff;
+            border: 1px solid #4b4b4b;
+            border-radius: 10px;
+            padding: 10px 12px;
+            box-shadow: var(--shadow);
+            font-size: 13px;
+            line-height: 1.4;
+            z-index: 999;
+            display: none;
+            pointer-events: none;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .nav-right input {
+            background: #666;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: #fff;
+            width: 160px;
+        }
+
+        .nav-right .sede {
+            font-weight: 700;
+            padding: 8px 10px;
+        }
+
+        .nav-right .seal {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .hero {
+            position: relative;
+            margin: 0;
+            max-width: none;
+            width: 100%;
+            border-radius: 0;
+            overflow: hidden;
+            min-height: 550px;
+            background: #0b1b2f;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.12);
+            z-index: 1;
+        }
+
+        .hero-gallery {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 800ms ease;
+        }
+
+        .hero-gallery img.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 46px 52px 54px;
+            color: #fff;
+            max-width: 620px;
+        }
+
+        .team-actions {
+            position: absolute;
+            right: 52px;
+            bottom: 28px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 70%;
+            max-width: 260px;
+            text-align: right;
+        }
+
+        .team-actions .btn {
+            width: 100%;
+        }
+
+        .hero h1 {
+            margin: 0 0 6px;
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .hero .subtitle {
+            color: #f7d36b;
+            font-style: italic;
+            margin: 0 0 22px;
+            font-size: 18px;
+        }
+
+        .meta {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 26px;
+            line-height: 1.9;
+        }
+
+        .meta strong {
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-yellow {
+            background: var(--yellow);
+            color: #fff;
+            border: 2px solid #f8c753;
+        }
+
+        .btn-blue {
+            background: var(--blue);
+            color: #fff;
+            border: 2px solid #0059b0;
+        }
+
+        .acreditacion {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            width: 70px;
+            z-index: 3;
+        }
+
+        .section-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0;
+            background: #ffffff;
+            border-top: none;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .nav-tile {
+            position: relative;
+            min-height: 300px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: #ffffff;
+            background-image: var(--tile-bg);
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .nav-tile::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--tile-color);
+            opacity: 0.90;
+            z-index: 1;
+            transition: opacity 220ms ease;
+        }
+
+        .nav-tile:hover::before {
+            opacity: 0.99;
+        }
+
+        .nav-tile:hover .tile-icon {
+            transform: scale(1.07);
+            transition: transform 220ms ease;
+        }
+
+        .tile-trigger {
+            position: relative;
+            z-index: 2;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            place-items: center;
+            padding: 12px 10px 16px;
+            width: 100%;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            line-height: 1.2;
+            text-align: center;
+            transition: transform 220ms ease;
+            font-size: 20px;
+        }
+
+        .tile-label {
+            margin-top: -24px;
+            transform: translate(var(--label-x, 0), var(--label-shift, 0));
+            text-align: center;
+            max-width: 200px;
+            display: block;
+            width: 100%;
+        }
+
+        .tile-icon {
+            width: 190px;
+            height: 190px;
+            background: transparent;
+            border: none;
+        }
+
+
+        .tile-icon svg {
+            width: 34px;
+            height: 34px;
+            stroke: #ffffff;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .tile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-tile:hover .tile-trigger {
+            transform: scale(1.04);
+        }
+
+        .section-nav .dropdown-menu {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 8px;
+            z-index: 5;
+        }
+
+        .section-nav .dropdown-menu a:hover {
+            background: #f3f4f6;
+        }
+
+        .section-emergencias {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 36px 24px 12px;
+        }
+
+        .emergencias-banner {
+            background: #b40000;
+            color: #fff;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            font-weight: 800;
+            font-size: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .emergencias-banner span {
+            font-weight: 500;
+            font-size: 16px;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .emergencias-card {
+            margin-top: 18px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            border: 4px solid #f0b000;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .emergencias-card iframe,
+        .emergencias-card object {
+            width: 100%;
+            height: 900px;
+            border-radius: 12px;
+            display: block;
+            border: none;
+        }
+
+        .emergencias-fab {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 1000;
+            background: #f9ae00;
+            color: #fff;
+            border: none;
+            padding: 14px 18px;
+            border-radius: 999px;
+            font-weight: 800;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: bottom 0.2s ease, width 0.25s ease, height 0.25s ease, padding 0.25s ease, border-radius 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        body.news-active .emergencias-fab {
+            width: 52px;
+            height: 52px;
+            padding: 0;
+            border-radius: 50%;
+            justify-content: center;
+            gap: 0;
+        }
+
+        body.footer-visible .emergencias-fab {
+            bottom: 150px;
+        }
+
+        body.news-active .emergencias-fab .fab-text {
+            display: none;
+        }
+
+        .section {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 56px 24px;
+        }
+
+        .split-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 56px 24px;
+            display: grid;
+            grid-template-columns: 1.0fr 1.0fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .split-row .section {
+            max-width: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Ajustes manuales por sección */
+        #que-es {
+            transform: translateX(var(--que-shift, 0px));
+        }
+
+        #objetivos {
+            transform: translateX(var(--servicios-shift, 0px));
+        }
+
+
+        .section-lineas {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 36px 24px;
+            background: #f5f7fb;
+        }
+
+        .anchor-target {
+            position: relative;
+            top: -80px;
+            height: 0;
+        }
+
+        .section h2 {
+            margin: 0 0 18px;
+            font-size: 30px;
+            color: var(--gray-900);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 42px;
+            align-items: center;
+        }
+
+
+        .photo-card img {
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .photo-card {
+            margin: 0;
+        }
+
+        .photo-card figcaption {
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .photo-card .accent {
+            width: 16px;
+            height: 3px;
+            background: var(--yellow);
+            display: inline-block;
+        }
+
+        .text-block {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .section-objetivos h2 {
+            margin-bottom: 28px;
+        }
+
+        .section-que-wrap {
+            width: 100%;
+            background: #ecf2fa;
+            ;
+
+        }
+
+        .section-servicios-wrap {
+            width: 100%;
+            background: #fffcf5;
+        }
+
+        .section-objetivos-wrap {
+            width: 100%;
+            background: #f3f6fb;
+        }
+
+        .section-articulos-wrap {
+            width: 100%;
+            background: #f3f6fb;
+            padding-bottom: 80px;
+        }
+
+        .section-que {
+            background: transparent;
+            color: inherit;
+            border-radius: 0;
+            padding-bottom: 250px;
+            max-width: 1200px;
+        }
+
+        .section-que .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-que h2 {
+            color: var(--gray-900);
+            font-size: 32px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-que .text-block,
+        .section-que .photo-card figcaption {
+            color: var(--gray-500);
+        }
+
+        .section-que .text-block {
+            font-size: 12px;
+            line-height: 1.9;
+            max-width: none;
+            width: 100%;
+        }
+
+        .que-card {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 28px;
+            align-items: center;
+            transform: scale(1.35);
+            transform-origin: top center;
+            margin-top: 24px;
+        }
+
+        .que-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
+            position: relative;
+            z-index: 2;
+            transform: translateX(var(--que-img-shift, 0px));
+        }
+
+        .que-body {
+            background: #d8d8d8;
+            padding: 44px 46px;
+            border-radius: 4px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+            box-sizing: inherit;
+            transform: translateY(-66px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .que-body h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .que-body p {
+            margin: 0 0 12px;
+            color: var(--gray-700);
+            line-height: 1.7;
+            font-size: 1.3 em !important;
+        }
+
+        .que-body .link {
+            color: #00468a;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        .que-content {
+            width: 200%;
+            max-width: 200%;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .section-que .text-block p {
+            margin-bottom: 14px;
+        }
+
+        .section-que .two-col {
+            gap: 50px;
+        }
+
+        .section-servicios {
+            border-radius: 0;
+            padding: 64px 0;
+            max-width: none;
+            position: relative;
+        }
+
+        .section-servicios::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+
+        .section-servicios .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-servicios h2 {
+            background: none;
+            color: #ffffff;
+            padding: 0;
+            border-radius: 0;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        /* Colores por sección (prioridad alta frente a plantilla) */
+        #bienestar-page main {
+            color: #1f2937;
+        }
+
+        #bienestar-page .hero,
+        #bienestar-page .hero h1,
+        #bienestar-page .hero .subtitle,
+        #bienestar-page .hero .meta,
+        #bienestar-page .section-nav,
+        #bienestar-page .section-nav a {
+            color: #ffffff;
+        }
+
+        #bienestar-page .section-que,
+        #bienestar-page .section-que h2,
+        #bienestar-page .section-que .text-block,
+        #bienestar-page .section-que .photo-card figcaption {
+            color: #1f2937;
+        }
+
+        #bienestar-page .section-servicios h2 {
+            color: #111827 !important;
+        }
+
+        #bienestar-page .section-servicios h3,
+        #bienestar-page .section-servicios h4,
+        #bienestar-page .section-servicios p {
+            color: #111827;
+        }
+
+        /* Texto en tarjetas de Servicios */
+        .servicio-card .content h3,
+        .servicio-card .content p {
+            color: #111827 !important;
+        }
+
+        .section-objetivos {
+            background: transparent;
+            padding: 64px 0;
+        }
+
+        .section-objetivos .section-inner {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-objetivos h2 {
+            color: #111827;
+            margin-bottom: 18px;
+        }
+
+        #bienestar-page .section-objetivos h2 {
+            color: #111827 !important;
+        }
+
+        /* Objetivos de Bienestar (tarjetas grandes estilo final) */
+        .section-objetivos-wrap {
+            background: #f3f6fb;
+            padding: 48px 0 72px;
+        }
+
+        #objetivos-bienestar .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        #objetivos-bienestar h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 36px;
+        }
+
+        #objetivos-bienestar .objetivos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 36px;
+            align-items: stretch;
+        }
+
+        #objetivos-bienestar .objetivo-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 34px 32px;
+            border: 1px solid #e3e9f1;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-height: 520px;
+        }
+
+        #objetivos-bienestar .objetivo-icon {
+            width: 72px;
+            height: 72px;
+            display: grid;
+            place-items: center;
+            align-self: center;
+            background: transparent;
+            border-radius: 0;
+        }
+
+        #objetivos-bienestar .objetivo-icon img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+        }
+
+        #objetivos-bienestar .objetivo-card h3 {
+            margin: 0;
+            font-size: 22px;
+            color: #1f2937;
+        }
+
+        #objetivos-bienestar .objetivo-card p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        #objetivos-bienestar .objetivo-btn {
+            margin-top: auto;
+            align-self: center;
+            background: #0b3b7a;
+            color: #ffffff;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 36px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .acuerdo-btn {
+            margin-top: 8px;
+            align-self: flex-start;
+            background: #1d4e89;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .acuerdos-accordion {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 18px;
+            max-height: 640px;
+            overflow: auto;
+            padding-right: 6px;
+            align-items: start;
+        }
+
+        .acuerdo-item {
+            border: 1px solid #e6ecf2;
+            border-radius: 10px;
+            background: #ffffff;
+            overflow: hidden;
+            align-self: start;
+        }
+
+        .acuerdo-trigger {
+            width: 100%;
+            text-align: left;
+            background: #f8fafc;
+            border: none;
+            padding: 12px 14px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #111827;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .acuerdo-trigger::after {
+            content: "▾";
+            font-size: 14px;
+        }
+
+        .acuerdo-item.open .acuerdo-trigger::after {
+            transform: rotate(180deg);
+        }
+
+        .acuerdo-panel {
+            display: none;
+            padding: 0;
+            background: #ffffff;
+        }
+
+        .acuerdo-item.open .acuerdo-panel {
+            display: block;
+            padding: 8px 12px 12px;
+        }
+
+        .acuerdo-panel ul {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 6px;
+        }
+
+        .acuerdo-panel a {
+            color: #0d3b7c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        #bienestar-page .section-lineas,
+        #bienestar-page .section-lineas h2,
+        #bienestar-page .section-lineas .section-lead,
+        #bienestar-page .linea-btn {
+            color: #1f2937;
+        }
+
+        #bienestar-page .section-lineas h2,
+        #bienestar-page .section-lineas .section-lead {
+            text-align: center;
+        }
+
+        /* Quitar línea/underline global del template en el título principal */
+        #bienestar-page .hero h1 {
+            border-bottom: none !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+        }
+
+        #bienestar-page .hero h1::after,
+        #bienestar-page .hero h1::before {
+            content: none !important;
+            border: 0 !important;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 26px;
+            margin-top: 24px;
+        }
+
+        .servicio-card {
+            position: relative;
+            background: transparent;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: none;
+            border: none;
+            height: 420px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .servicio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .servicio-card .content {
+            position: static;
+            background: transparent;
+            color: #111827 !important;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .servicio-card:nth-child(even) img {
+            order: 2;
+        }
+
+        .servicio-card:nth-child(even) .content {
+            order: 1;
+        }
+
+        .servicio-card h3 {
+            margin: 0 0 10px;
+            font-size: 27px;
+            color: #fff !important;
+        }
+
+        .servicio-card p {
+            margin: 0;
+            font-size: 19px;
+            color: #fff !important;
+            line-height: 1.7;
+        }
+
+        .servicio-more {
+            margin-top: 14px;
+            align-self: flex-start;
+            background: #0d3b7c;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .servicio-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 24px;
+        }
+
+        .servicio-modal.open {
+            display: flex;
+        }
+
+        .servicio-panel {
+            width: min(900px, 95vw);
+            max-height: 85vh;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .servicio-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px;
+            background: #0d3b7c;
+            color: #fff;
+        }
+
+        .servicio-close {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .servicio-panel-body {
+            padding: 18px;
+            overflow: auto;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .section-perfil {
+            max-width: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 320px;
+        }
+
+        .perfil-panel {
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+        }
+
+        .perfil-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+        }
+
+        .perfil-panel .overlay {
+            position: absolute;
+            inset: 0;
+            opacity: 0.75;
+        }
+
+        .perfil-panel.aspirante .overlay {
+            background: #4e8fcc;
+        }
+
+        .perfil-panel.egresado .overlay {
+            background: #f9ae00;
+        }
+
+        .perfil-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .section-lead {
+            color: var(--gray-500);
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        .section-articulos h2,
+        .section-articulos .section-lead {
+            text-align: center !important;
+        }
+
+        .section-eventos h2,
+        .section-objetivos h2 {
+            text-align: center;
+        }
+
+        .lineas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .linea {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08);
+            border: 1px solid #eef0f2;
+            font-weight: 600;
+        }
+
+        .linea-btn {
+            background: #fff;
+            border-radius: 14px;
+            padding: 16px 18px;
+            box-shadow: 0 6px 12px rgba(15, 23, 42, 0.06);
+            border: 1px solid #eef0f2;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            display: grid;
+            grid-template-columns: 40px 1fr auto;
+            align-items: center;
+            gap: 12px;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+            border-left: 4px solid var(--line-color, #94a3b8);
+        }
+
+        .linea-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 14px rgba(15, 23, 42, 0.08);
+        }
+
+        .linea-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: color-mix(in srgb, var(--line-color, #94a3b8) 12%, #ffffff);
+            font-size: 18px;
+        }
+
+        .linea-title {
+            font-size: 15px;
+        }
+
+        .linea-btn::after {
+            content: "→";
+            opacity: 0.5;
+            font-size: 18px;
+        }
+
+        .linea-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1002;
+            padding: 18px;
+        }
+
+        .linea-modal.open {
+            display: flex;
+        }
+
+        .linea-modal .panel {
+            width: min(980px, 96vw);
+            max-height: 90vh;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            border-top: 6px solid var(--line-color, #94a3b8);
+        }
+
+        .linea-modal .panel-header {
+            background: #ffffff;
+            color: var(--gray-900);
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 800;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .linea-modal .panel-header span {
+            font-size: 20px;
+        }
+
+        .linea-modal .panel-body {
+            padding: 20px 22px 26px;
+            overflow: auto;
+            background: #fcfcfd;
+        }
+
+        .linea-modal h3,
+        .linea-modal h4 {
+            color: var(--gray-900);
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        .linea-modal p,
+        .linea-modal li {
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+
+        .linea-modal table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+        }
+
+        .linea-modal th,
+        .linea-modal td {
+            border: 1px solid #e5e7eb;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .linea-modal th {
+            background: #f3f4f6;
+        }
+
+        .linea-close {
+            background: #111827;
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .section-articulos {
+            position: relative;
+            margin-right: auto;
+            padding: 0 32px;
+            transform: translateX(var(--articulos-shift, 0px));
+
+        }
+
+        .section-articulos h2,
+        .section-articulos .section-lead {
+            text-align: left;
+        }
+
+        .section-eventos {
+            background: #f9fafb;
+            transform: translateX(var(--eventos-shift, 0px));
+        }
+
+        .calendar {
+            background: #fff;
+            border: 1px solid #eef0f2;
+            border-radius: 18px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+            padding: 20px 22px;
+        }
+
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .calendar-title {
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .calendar-nav {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            display: grid;
+            place-items: center;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 22px;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+
+        .calendar-day {
+            border: 1px solid #eef0f2;
+            border-radius: 10px;
+            min-height: 44px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            position: relative;
+            background: #fff;
+            font-weight: 600;
+        }
+
+        .calendar-day.is-other {
+            opacity: 0.4;
+        }
+
+        .calendar-day.has-event::after {
+            content: "";
+            position: absolute;
+            bottom: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f59e0b;
+        }
+
+        .calendar-day.is-selected {
+            border-color: #2563eb;
+            box-shadow: inset 0 0 0 1px #2563eb;
+        }
+
+        .calendar-events h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+        }
+
+        .calendar-events ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .calendar-events li {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 10px 12px;
+            background: #fff;
+            font-size: 14px;
+        }
+
+        .calendar-events li a {
+            color: #00468a;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .calendar-empty {
+            color: var(--gray-500);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .carousel {
+            position: relative;
+            margin: 26px 0 0 0;
+            padding: 0 52px;
+            max-width: none;
+            width: 100%;
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.45s ease;
+        }
+
+        .carousel-card {
+            flex: 0 0 calc(25% - 15px);
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: none;
+            border: 1px solid #eef0f2;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .carousel-card .content {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .carousel-card h4 {
+            margin: 0;
+            color: var(--gray-900);
+            min-height: 3.2em;
+        }
+
+        .carousel-card .btn {
+            margin-top: auto;
+            padding: 8px 14px;
+            border-radius: 10px;
+            background: #0d3b7c;
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: none;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: #fff;
+            box-shadow: var(--shadow);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .carousel-btn.prev {
+            left: 12px;
+        }
+
+        .carousel-btn.next {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            display: none;
+        }
+
+        .carousel-dots button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: #d1d5db;
+            cursor: pointer;
+        }
+
+        .carousel-dots button.active {
+            background: var(--yellow);
+        }
+
+        .section-bienestar {
+            max-width: none;
+            padding: 0;
+            position: relative;
+            color: #fff;
+        }
+
+        .bienestar-bg {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bienestar-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .bienestar-content {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 32px 60px;
+        }
+
+        .bienestar-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 12px;
+            max-width: 420px;
+        }
+
+        .bienestar-col h3 {
+            font-size: 26px;
+            margin: 0;
+        }
+
+        .bienestar-col .line {
+            width: 80px;
+            height: 4px;
+            background: #fff;
+        }
+
+        .site-footer {
+            background: #5b5b5b;
+            color: #f3f4f6;
+        }
+
+        .footer-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 26px 24px;
+            display: grid;
+            grid-template-columns: 2fr 1.1fr 0.6fr;
+            gap: 24px;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .footer-links a {
+            display: block;
+            margin-bottom: 6px;
+            color: #f3f4f6;
+        }
+
+        .footer-contact h4 {
+            margin: 0 0 10px;
+        }
+
+        .footer-contact p {
+            margin: 0 0 6px;
+        }
+
+        .footer-logos {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .footer-logos img {
+            width: 70px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 1024px) {
+            .main-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-right {
+                justify-content: flex-start;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 380px;
+            }
+
+            .objetivos-grid,
+            .lineas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-perfil {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-card {
+                flex: 0 0 calc(50% - 10px);
+            }
+
+            .bienestar-content {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+
+            .bienestar-bg {
+                height: 420px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .top-strip {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .hero {
+                border-radius: 0;
+            }
+
+            .team-actions {
+                right: 24px;
+                bottom: 20px;
+            }
+
+            .hero-content {
+                padding: 30px 22px 40px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .subtitle {
+                font-size: 16px;
+            }
+
+            .section-nav .divider {
+                display: none;
+            }
+
+            .objetivos-grid,
+            .lineas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .split-row {
+                grid-template-columns: 1fr;
+            }
+
+            .servicios-grid {
+                grid-auto-flow: column;
+                grid-auto-columns: 80%;
+                grid-template-columns: none;
+                overflow-x: auto;
+                gap: 18px;
+                padding-bottom: 10px;
+                scroll-snap-type: x mandatory;
+            }
+
+            .servicio-card {
+                scroll-snap-align: start;
+            }
+
+            .carousel-card {
+                flex: 0 0 calc(50% - 10px);
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+
+            .bienestar-bg {
+                height: 460px;
+            }
+
+            .emergencias-banner {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .emergencias-fab {
+                right: 12px;
+                bottom: 12px;
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .main-nav {
+                padding: 12px 16px;
+            }
+
+            .brand {
+                width: 100%;
+            }
+
+            .nav-right input {
+                width: 100%;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .primary-nav {
+                gap: 8px;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="bienestar-page">
+        <main>
+            <section class="hero">
+                <div class="hero-gallery" aria-hidden="true">
+                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/hero.png" alt="" class="active" />
+                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/acompanamiento.jpg" alt="" />
+                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/deporte_V2.png" alt="" />
+                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/bienestar.png" alt="" />
+                </div>
+                <br>
+                <br>
+                <br>
+            </section>
+
+            <section class="section-que-wrap">
+                <div class="section section-que" id="que-es">
+                    <h2>¿Qué es la Dirección de Bienestar?</h2>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="que-card">
+                        <div class="que-image" style="--que-img-shift: 55px;">
+                            <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Equipo_Bienestar_03.jpg"
+                                alt="Comunidad universitaria" />
+                        </div>
+                        <div class="que-body">
+                            <h3>Dirección de Bienestar</h3>
+                            <p>La <strong>Dirección de Bienestar</strong> de la Facultad de Minas promueve el bienestar
+                                integral de la
+                                comunidad universitaria mediante programas y servicios en salud, cultura, deporte y
+                                apoyo psicosocial.
+                            </p>
+                            <p>Trabajamos para fortalecer la permanencia estudiantil, el acompañamiento emocional, la
+                                vida saludable y
+                                la integración de estudiantes, docentes y administrativos en un entorno solidario y
+                                activo.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <a class="emergencias-fab"
+                href="http://new-minas.medellin.unal.edu.co/index.php?option=com_content&view=article&layout=edit&id=2"
+                target="_blank" rel="noreferrer"><span class="fab-icon">🚑</span><span
+                    class="fab-text">Emergencias</span></a>
+
+            <section class="section-nav-wrap">
+                <nav class="section-nav">
+                    <a class="nav-tile" href="#que-es"
+                        style="--tile-color:#df959e; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/acompanamiento.jpg');">
+                        <span class="tile-trigger">
+                            <span class="tile-icon" aria-hidden="true">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/psicosocial.png"
+                                    alt="" />
+                            </span>
+                            <span class="tile-label">Acompañamiento Integral</span>
+                        </span>
+                    </a>
+                    <a class="nav-tile" href="#objetivos"
+                        style="--tile-color:#edbf70; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/apoyo_economico%20.jpg');">
+                        <span class="tile-trigger">
+                            <span class="tile-icon" aria-hidden="true">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/gestion.png"
+                                    alt="" />
+                            </span>
+                            <span class="tile-label">Gestión y Fomento Socioeconómico</span>
+                        </span>
+                    </a>
+                    <a class="nav-tile" href="#lineas"
+                        style="--tile-color:#f18a5e; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/deporte_V2.png');">
+                        <span class="tile-trigger">
+                            <span class="tile-icon" aria-hidden="true">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/fisica.png"
+                                    alt="" />
+                            </span>
+                            <span class="tile-label">Actividad Física y Deporte</span>
+                        </span>
+                    </a>
+                    <a class="nav-tile" href="#bienestar"
+                        style="--tile-color:#8ab1cb; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/salud_V2.jpg'); --label-x:-6px;">
+                        <span class="tile-trigger">
+                            <span class="tile-icon" aria-hidden="true">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/salud.png"
+                                    alt="" />
+                            </span>
+                            <span class="tile-label">Salud</span>
+                        </span>
+                    </a>
+                    <a class="nav-tile" href="#perfil"
+                        style="--tile-color:#a68fd2; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/cultura.jpg');">
+                        <span class="tile-trigger">
+                            <span class="tile-icon" aria-hidden="true">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/cultura.png"
+                                    alt="" />
+                            </span>
+                            <span class="tile-label">Cultura</span>
+                        </span>
+                    </a>
+                </nav>
+            </section>
+
+
+            <section class="section-servicios-wrap">
+                <div class="section section-servicios" id="servicios-estudiantiles">
+                    <div class="section-inner">
+                        <h2>Servicios estudiantiles</h2>
+
+                        <div class="servicios-grid">
+                            <article class="servicio-card">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/reubicacion.jpg"
+                                    alt="Servicio 1" />
+                                <div class="content">
+                                    <h3>Reubicación Socioeconómica</h3>
+                                    <p>Reubicación Socioeconómica es un proceso mediante el cual un estudiante puede
+                                        solicitar la revisión
+                                        y
+                                        actualización de su perfil socioeconómico ante el Comité de Matrícula, con el
+                                        objetivo de ajustar su
+                                        Puntaje Básico de Matrícula cuando su situación económica ha cambiado
+                                        significativamente.</p>
+                                    <button class="servicio-more" type="button" data-servicio="reubicacion">Ver
+                                        más</button>
+                                </div>
+                            </article>
+
+                            <article class="servicio-card">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/casillero.jpg"
+                                    alt="Servicio 2" />
+                                <div class="content">
+                                    <h3>Casillero</h3>
+                                    <p>En la Facultad de Minas puedes solicitar un casillero en el Campus Robledo o
+                                        Campus del Río. La
+                                        asignación es por orden de llegada según tu programa curricular, sujeto a
+                                        disponibilidad.</p>
+                                    <button class="servicio-more" type="button" data-servicio="casillero">Ver
+                                        más</button>
+                                </div>
+                            </article>
+
+                            <article class="servicio-card">
+                                <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/casillero.jpg"
+                                    alt="Servicio 2" />
+                                <div class="content">
+                                    <h3>Paz y salvo para graduación</h3>
+                                    <p>Para graduarte en la Facultad de Minas debes estar a paz y salvo con todas las
+                                        dependencias,
+                                        incluyendo Biblioteca y Bienestar Universitario. La buena noticia es que la
+                                        Secretaría de Facultad
+                                        gestiona este proceso automáticamente, sin que tengas que solicitar certificados
+                                        por separado. Solo
+                                        asegúrate de haber devuelto materiales, casilleros y no tener sanciones
+                                        pendientes.</p>
+                                    <button class="servicio-more" type="button" data-servicio="pazysalvo">Ver
+                                        más</button>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="servicio-modal" id="servicio-modal" role="dialog" aria-modal="true"
+                aria-labelledby="servicio-modal-title">
+                <div class="servicio-panel">
+                    <div class="servicio-panel-header">
+                        <h3 id="servicio-modal-title">Detalle del servicio</h3>
+                        <button class="servicio-close" type="button" id="servicio-close">×</button>
+                    </div>
+                    <div class="servicio-panel-body" id="servicio-modal-body"></div>
+                </div>
+            </div>
+
+            <section class="section-objetivos-wrap">
+                <div class="section section-objetivos" id="acuerdos-legales">
+                    <div class="section-inner">
+                        <h2>Acuerdos legales</h2>
+                        <div class="acuerdos-accordion">
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 1</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 2</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 3</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 4</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 5</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 6</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 7</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 8</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 9</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 10</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 11</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 12</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 13</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 14</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 15</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 16</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 17</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 18</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 19</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 20</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 21</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 22</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 23</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 24</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 25</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                            <div class="acuerdo-item">
+                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 26</button>
+                                <div class="acuerdo-panel">
+                                    <p>Resumen breve del acuerdo y su alcance.</p>
+                                    <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-objetivos-wrap">
+                <div class="section section-objetivos" id="objetivos-bienestar">
+                    <div class="section-inner">
+                        <h2>Objetivos de Bienestar</h2>
+                        <div class="objetivos-grid">
+                            <article class="objetivo-card">
+                                <div class="objetivo-icon">
+                                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/reubicacion_socioeconomica.png"
+                                        alt="Reubicación Socioeconómica" />
+                                </div>
+                                <h3>Reubicación Socioeconómica</h3>
+                                <p>Reubicación Socioeconómica es un proceso mediante el cual un estudiante puede
+                                    solicitar la revisión y actualización de su perfil socioeconómico ante el Comité de
+                                    Matrícula.</p>
+                                <button class="objetivo-btn" type="button">Ver más</button>
+                            </article>
+
+                            <article class="objetivo-card">
+                                <div class="objetivo-icon">
+                                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/casillero.png"
+                                        alt="Casillero" />
+                                </div>
+                                <h3>Casillero</h3>
+                                <p>En la Facultad de Minas puedes solicitar un casillero en el Campus Robledo o Campus
+                                    del Río. La asignación es por orden de llegada según tu programa curricular.</p>
+                                <button class="objetivo-btn" type="button">Ver más</button>
+                            </article>
+
+                            <article class="objetivo-card">
+                                <div class="objetivo-icon">
+                                    <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/paz_y_salvo_para_graduacion.png"
+                                        alt="Paz y salvo para graduación" />
+                                </div>
+                                <h3>Paz y salvo para graduación</h3>
+                                <p>Para graduarte en la Facultad de Minas debes estar a paz y salvo con todas las
+                                    dependencias, incluyendo Biblioteca y Bienestar Universitario.</p>
+                                <button class="objetivo-btn" type="button">Ver más</button>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-articulos-wrap">
+                <div class="section section-articulos full-width" id="articulos">
+                    <h2>Noticias y Actividades</h2>
+                    <p class="section-lead">Conoce las actividades y estrategias que fortalecen el bienestar en la
+                        Facultad de
+                        Minas.
+                    </p>
+
+                    <div class="carousel">
+                        <button class="carousel-btn prev" aria-label="Anterior">‹</button>
+                        <div class="carousel-viewport">
+                            <div class="carousel-track" id="carousel-track"></div>
+                        </div>
+                        <button class="carousel-btn next" aria-label="Siguiente">›</button>
+                    </div>
+                    <div class="carousel-dots" id="carousel-dots"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <script>
+            const heroImages = document.querySelectorAll(".hero-gallery img");
+            let heroIndex = 0;
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            if (heroImages.length > 1 && !reduceMotion) {
+                setInterval(() => {
+                    heroImages[heroIndex].classList.remove("active");
+                    heroIndex = (heroIndex + 1) % heroImages.length;
+                    heroImages[heroIndex].classList.add("active");
+                }, 3000);
+            }
+
+            const articles = [
+                {
+                    title: "Semana de salud mental y autocuidado para la comunidad universitaria",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Agenda cultural: talleres, muestras artísticas y encuentros",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Jornada deportiva y recreativa en el Campus Robledo",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Convocatoria de apoyos y beneficios para estudiantes",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Semana de salud mental y autocuidado para la comunidad universitaria",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Agenda cultural: talleres, muestras artísticas y encuentros",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Jornada deportiva y recreativa en el Campus Robledo",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+                {
+                    title: "Convocatoria de apoyos y beneficios para estudiantes",
+                    img: "//minas.medellin.unal.edu.co/images/Calendario/imagenes/Posgrados_2025_-.png",
+                    href: "#",
+                },
+            ];
+
+            const track = document.getElementById("carousel-track");
+            const dots = document.getElementById("carousel-dots");
+            const prevBtn = document.querySelector(".carousel-btn.prev");
+            const nextBtn = document.querySelector(".carousel-btn.next");
+
+            let index = 0;
+            let autoSlideTimer = null;
+
+            function getPerView() {
+                return 2;
+            }
+
+            function renderCards() {
+                track.innerHTML = "";
+                articles.forEach((item) => {
+                    const card = document.createElement("article");
+                    card.className = "carousel-card";
+                    card.innerHTML = `
+          <img src="${item.img}" alt="${item.title}" />
+          <div class="content">
+            <h4>${item.title}</h4>
+            <a class="btn" href="${item.href}">Leer más</a>
+          </div>
+        `;
+                    track.appendChild(card);
+                });
+            }
+
+            function renderDots() {
+                dots.innerHTML = "";
+                const perView = getPerView();
+                const pages = Math.ceil(articles.length / perView);
+                for (let i = 0; i < pages; i++) {
+                    const dot = document.createElement("button");
+                    dot.addEventListener("click", () => {
+                        index = i;
+                        updateCarousel();
+                    });
+                    dots.appendChild(dot);
+                }
+            }
+
+            function updateDots() {
+                const dotButtons = dots.querySelectorAll("button");
+                dotButtons.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === index);
+                });
+            }
+
+            function updateCarousel() {
+                const perView = getPerView();
+                const cardWidth = track.querySelector(".carousel-card").offsetWidth;
+                const gap = 20;
+                const offset = (cardWidth + gap) * index * perView;
+                track.style.transform = `translateX(-${offset}px)`;
+                updateDots();
+            }
+
+            function clampIndex() {
+                const perView = getPerView();
+                const maxIndex = Math.max(0, Math.ceil(articles.length / perView) - 1);
+                if (index > maxIndex) index = maxIndex;
+                if (index < 0) index = 0;
+            }
+
+            function startAutoSlide() {
+                stopAutoSlide();
+                autoSlideTimer = setInterval(() => {
+                    const perView = getPerView();
+                    const maxIndex = Math.max(0, Math.ceil(articles.length / perView) - 1);
+                    index = index >= maxIndex ? 0 : index + 1;
+                    updateCarousel();
+                }, 3000);
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideTimer) {
+                    clearInterval(autoSlideTimer);
+                    autoSlideTimer = null;
+                }
+            }
+
+            prevBtn.addEventListener("click", () => {
+                index -= 1;
+                clampIndex();
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener("click", () => {
+                index += 1;
+                clampIndex();
+                updateCarousel();
+            });
+
+            window.addEventListener("resize", () => {
+                renderDots();
+                clampIndex();
+                updateCarousel();
+            });
+
+            renderCards();
+            renderDots();
+            updateCarousel();
+            startAutoSlide();
+
+            const carousel = document.querySelector(".carousel");
+            if (carousel) {
+                carousel.addEventListener("mouseenter", stopAutoSlide);
+                carousel.addEventListener("mouseleave", startAutoSlide);
+                carousel.addEventListener("focusin", stopAutoSlide);
+                carousel.addEventListener("focusout", startAutoSlide);
+            }
+
+            const dropdowns = document.querySelectorAll(".dropdown-trigger");
+            dropdowns.forEach((trigger) => {
+                trigger.addEventListener("click", () => {
+                    const parent = trigger.parentElement;
+                    const wasOpen = parent.classList.contains("open");
+                    document.querySelectorAll(".dropdown.open").forEach((d) => d.classList.remove("open"));
+                    document.querySelectorAll(".dropdown-trigger").forEach((t) => t.setAttribute("aria-expanded", "false"));
+                    if (!wasOpen) {
+                        parent.classList.add("open");
+                        trigger.setAttribute("aria-expanded", "true");
+                    }
+                });
+            });
+
+            document.addEventListener("click", (e) => {
+                const isDropdown = e.target.closest(".dropdown");
+                if (!isDropdown) {
+                    document.querySelectorAll(".dropdown.open").forEach((d) => d.classList.remove("open"));
+                    document.querySelectorAll(".dropdown-trigger").forEach((t) => t.setAttribute("aria-expanded", "false"));
+                }
+            });
+
+            const servicioModal = document.getElementById("servicio-modal");
+            const servicioBody = document.getElementById("servicio-modal-body");
+            const servicioTitle = document.getElementById("servicio-modal-title");
+            const servicioClose = document.getElementById("servicio-close");
+
+            const servicioContent = {
+                reubicacion: {
+                    html: `
+            <p>El estudio de Reubicación Socioeconómica es una actividad del Comité de Matrícula, adscrito a la
+            División de Registro y Matrícula, el cual establece fechas calendario por período académico. El
+            estudiante debe realizar una solicitud durante las primeras ocho semanas del período académico donde
+            deberá demostrar, con documentación coherente y verídica, un cambio en su perfil socioeconómico que
+            pueda conllevar al cambio de su Puntaje Básico de Matrícula y de esta forma será el Comité de
+            Matrícula (commatricula_med@unal.edu.co) quien le entregue una respuesta a la solicitud.</p>
+            <p><strong>Motivos comunes para solicitar Reubicación Socioeconómica:</strong></p>
+            <ul>
+              <li>Disminución de ingresos de responsable económico.</li>
+              <li>Desempleo de responsable económico.</li>
+              <li>Enfermedad de responsable económico que conlleve disminución de capacidad laboral.</li>
+              <li>Abandono de responsable económico.</li>
+              <li>Fallecimiento de responsable económico.</li>
+              <li>Corrección de datos erróneos o ausentes en el perfil socioeconómico.</li>
+              <li>Cambio de vivienda propia a arrendada (viceversa).</li>
+              <li>Cambio de estrato mayor a menor (viceversa).</li>
+              <li>Aumento de hijos dependientes del núcleo familiar (menores de 18 años).</li>
+              <li>Independencia económica.</li>
+            </ul>
+            <p><strong>Importante:</strong> Antes de diligenciar el formulario de inscripción se recomienda escribir
+            un correo a fmvibien_med@unal.edu.co explicando los motivos por el cual solicita la reubicación
+            socioeconómica, con el fin de dar orientación a los documentos que requiere su solicitud, de acuerdo a
+            su situación particular.</p>
+          `
+                },
+                casillero: {
+                    html: `
+            <p>La Facultad de Minas permite a los estudiantes solicitar el servicio de casillero en el Campus
+            Robledo y Campus del Río. El proceso de asignación se realiza por solicitud del estudiante, respetando
+            el orden de llegada y bloque correspondiente de acuerdo a su programa curricular hasta agotar
+            existencias. Las demás adjudicaciones se harán en el mismo orden de llegada, en los espacios donde
+            haya casilleros disponibles.</p>
+            <p>Una vez asignado el casillero, el estudiante debe asegurarlo con su propio candado y será responsable
+            de los objetos que se encuentren dentro. El costo del servicio es de $5.000 COP y debe pagarse en las
+            primeras cuatro semanas de cada período académico. El impago generará una deuda asociada al estudiante
+            en el Sistema de Deudas del Sistema de Información Académica.</p>
+            <p>En la Facultad de Minas, los usuarios de casilleros conservan este servicio hasta finalizar su
+            programa curricular, o bien pueden entregarlo antes de forma presencial o virtual. El casillero debe
+            permanecer siempre con candado para evitar que otros hagan uso indebido del mismo. El uso indebido de
+            un casillero podrá iniciar proceso disciplinario.</p>
+            <p><strong>Casos en los que se deberá hacer entrega del casillero:</strong></p>
+            <ul>
+              <li>Entrega voluntaria.</li>
+              <li>Encontrarse inactivo en el Sistema de Información Académica (pérdida de calidad de estudiante,
+              estar en reserva de cupo o tener una sanción académica o disciplinaria).</li>
+            </ul>
+            <p>Para solicitar la asignación de un casillero envie un correo electrónico a la dirección
+            fmvibien_med@unal.edu.co con su nombre completo, número de documento de identidad, número de teléfono,
+            programa curricular y una breve justificación del uso pretendido.</p>
+          `
+                },
+                pazysalvo: {
+                    html: `
+            <p>Para graduarse en la Facultad de Minas, es obligatorio estar a paz y salvo con todas las dependencias,
+            incluyendo Biblioteca, Repositorio Institucional, y Bienestar Universitario (casilleros, préstamos). La
+            Secretaría de Facultad gestiona el reporte de estado de paz y salvo automáticamente con Bienestar sin
+            necesidad de solicitar certificados individuales.</p>
+            <p><strong>Paz y Salvo Bienestar Universitario (Facultad de Minas):</strong></p>
+            <ul>
+              <li><strong>Gestión:</strong> Las dependencias envían reportes de estado directamente a la Secretaría de la Facultad de Minas.</li>
+              <li><strong>Obligaciones:</strong> Deben estar al día en la devolución de materiales, casilleros (lockers) y no tener sanciones.</li>
+              <li><strong>Atención:</strong> Para dudas o trámites, la dirección de Bienestar está en el Campus Robledo, Bloque M4, Oficina 002.</li>
+              <li><strong>Contacto:</strong> Correo electrónico fmvibien_med@unal.edu.co o teléfono 4255032.</li>
+            </ul>
+          `
+                }
+            };
+
+            document.querySelectorAll(".servicio-more").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const key = btn.getAttribute("data-servicio");
+                    const data = servicioContent[key];
+                    if (!data) return;
+                    servicioTitle.textContent = data.title;
+                    servicioBody.innerHTML = data.html;
+                    servicioModal.classList.add("open");
+                    document.body.classList.add("modal-open");
+                });
+            });
+
+            document.querySelectorAll(".acuerdo-trigger").forEach((trigger) => {
+                trigger.addEventListener("click", () => {
+                    const item = trigger.closest(".acuerdo-item");
+                    if (!item) return;
+                    const container = item.closest(".acuerdos-accordion");
+                    if (container) {
+                        container.querySelectorAll(".acuerdo-item.open").forEach((openItem) => {
+                            if (openItem !== item) {
+                                openItem.classList.remove("open");
+                                const btn = openItem.querySelector(".acuerdo-trigger");
+                                if (btn) btn.setAttribute("aria-expanded", "false");
+                            }
+                        });
+                    }
+                    const willOpen = !item.classList.contains("open");
+                    item.classList.toggle("open");
+                    trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+                });
+            });
+
+            if (servicioClose) {
+                servicioClose.addEventListener("click", () => {
+                    servicioModal.classList.remove("open");
+                    document.body.classList.remove("modal-open");
+                });
+            }
+
+            if (servicioModal) {
+                servicioModal.addEventListener("click", (e) => {
+                    if (e.target === servicioModal) {
+                        servicioModal.classList.remove("open");
+                        document.body.classList.remove("modal-open");
+                    }
+                });
+            }
+
+            const modal = document.createElement("div");
+            modal.className = "option-modal";
+            modal.id = "option-tooltip";
+            modal.setAttribute("role", "tooltip");
+            document.body.appendChild(modal);
+
+            function showModal(target) {
+                const text = target.getAttribute("data-desc");
+                if (!text) return;
+                target.setAttribute("aria-describedby", "option-tooltip");
+                modal.textContent = text;
+                modal.style.display = "block";
+                document.body.classList.add("modal-open");
+
+                const rect = target.getBoundingClientRect();
+                const modalRect = modal.getBoundingClientRect();
+                const top = rect.top - modalRect.height - 10;
+                const left = rect.left;
+
+                modal.style.top = `${Math.max(8, top)}px`;
+                modal.style.left = `${Math.max(8, left)}px`;
+            }
+
+            function hideModal() {
+                modal.style.display = "none";
+                document.querySelectorAll(".dropdown-menu a[aria-describedby=\"option-tooltip\"]")
+                    .forEach((el) => el.removeAttribute("aria-describedby"));
+                document.body.classList.remove("modal-open");
+            }
+
+            document.querySelectorAll(".dropdown-menu a").forEach((item) => {
+                item.addEventListener("mouseenter", () => showModal(item));
+                item.addEventListener("mouseleave", hideModal);
+                item.addEventListener("focus", () => showModal(item));
+                item.addEventListener("blur", hideModal);
+            });
+
+            const lineaModal = document.getElementById("linea-modal");
+            const lineaModalTitle = document.getElementById("linea-modal-title");
+            const lineaModalBody = document.getElementById("linea-modal-body");
+            const lineaClose = document.getElementById("linea-close");
+            const lineaPanel = document.querySelector(".linea-modal .panel");
+            let lastFocusedElement = null;
+
+            function openLineaModal(btn) {
+                lastFocusedElement = document.activeElement;
+                const templateId = btn.getAttribute("data-template");
+                const tpl = templateId ? document.getElementById(templateId) : null;
+                const color = btn.getAttribute("data-color");
+                if (tpl) {
+                    const title = tpl.getAttribute("data-title") || "Detalle";
+                    lineaModalTitle.textContent = title;
+                    lineaModalBody.innerHTML = tpl.innerHTML;
+                } else {
+                    lineaModalTitle.textContent = "Detalle";
+                    lineaModalBody.textContent = "Contenido pendiente.";
+                }
+                if (color && lineaPanel) {
+                    lineaPanel.style.setProperty("--line-color", color);
+                }
+                lineaModal.classList.add("open");
+                document.body.classList.add("modal-open");
+                lineaClose.focus();
+            }
+
+            function closeLineaModal() {
+                lineaModal.classList.remove("open");
+                document.body.classList.remove("modal-open");
+                if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+                    lastFocusedElement.focus();
+                }
+            }
+
+            document.querySelectorAll(".linea-btn").forEach((btn) => {
+                btn.addEventListener("click", () => openLineaModal(btn));
+            });
+
+            lineaClose.addEventListener("click", closeLineaModal);
+            lineaModal.addEventListener("click", (e) => {
+                if (e.target === lineaModal) closeLineaModal();
+            });
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const footer = document.getElementById("footer");
+                const btn = document.querySelector(".emergencias-fab");
+                const news = document.getElementById("articulos");
+                if (!footer || !btn) return;
+
+                const obs = new IntersectionObserver((entries) => {
+                    document.body.classList.toggle("footer-visible", entries[0].isIntersecting);
+                }, { threshold: 0.01 });
+
+                obs.observe(footer);
+
+                if (news) {
+                    const setNewsState = () => {
+                        const rect = news.getBoundingClientRect();
+                        const viewH = window.innerHeight || document.documentElement.clientHeight;
+                        const inView = rect.top < viewH * 0.6 && rect.bottom > viewH * 0.4;
+                        document.body.classList.toggle("news-active", inView);
+                    };
+
+                    const newsObs = new IntersectionObserver((entries) => {
+                        document.body.classList.toggle("news-active", entries[0].isIntersecting);
+                    }, { threshold: 0.05, rootMargin: "-20% 0px -20% 0px" });
+                    newsObs.observe(news);
+                    setNewsState();
+                    window.addEventListener("scroll", setNewsState, { passive: true });
+                    window.addEventListener("resize", setNewsState);
+                }
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && lineaModal.classList.contains("open")) {
+                    closeLineaModal();
+                }
+            });
+
+
+        </script>
+    </div>
+</body>
+
+</html>
