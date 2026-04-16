@@ -48,8 +48,35 @@
             font-size: 18px;
         }
 
-        #bienestar-page,
-        #bienestar-page * {
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .sr-only:focus,
+        .sr-only:active {
+            clip: auto;
+            width: auto;
+            height: auto;
+            margin: 8px;
+            padding: 8px 12px;
+            overflow: visible;
+            background: #ffffff;
+            color: #111827;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            z-index: 2001;
+        }
+
+        #wellbeing-page,
+        #wellbeing-page * {
             font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
         }
 
@@ -59,200 +86,19 @@
             text-decoration: none;
         }
 
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #0d3b7c;
+            outline-offset: 3px;
+        }
+
         img {
             max-width: 100%;
             display: block;
         }
 
-        .site-header {
-            width: 100%;
-            background: #4b4b4b;
-            color: #f3f4f6;
-        }
-
-        .top-strip {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 24px;
-            font-size: 14px;
-            background: #4f4f4f;
-        }
-
-        .strip-links a {
-            margin-right: 18px;
-            opacity: 0.9;
-        }
-
-        .strip-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .social a {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.15);
-            font-size: 12px;
-        }
-
-        .main-nav {
-            display: grid;
-            grid-template-columns: 230px 1fr 260px;
-            gap: 18px;
-            align-items: center;
-            padding: 14px 24px;
-            background: linear-gradient(90deg, rgba(63, 63, 63, 0.95), rgba(80, 80, 80, 0.85));
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #3f3f3f;
-            padding: 12px;
-            border-radius: 6px;
-            box-shadow: var(--shadow);
-        }
-
-        .brand img {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-        }
-
-        .brand-text {
-            line-height: 1.05;
-            font-size: 11px;
-            letter-spacing: 0.4px;
-        }
-
-        .brand-text strong {
-            font-size: 16px;
-            display: block;
-        }
-
-        .nav-center {
-            color: #fff;
-        }
-
-        .site-title {
-            color: var(--yellow);
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .primary-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-weight: 600;
-            font-size: 14px;
-            align-items: center;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-trigger {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 8px;
-            background: transparent;
-            border: none;
-            color: inherit;
-            font: inherit;
-            cursor: pointer;
-        }
-
-        .dropdown-trigger::after {
-            content: "▼";
-            font-size: 10px;
-            opacity: 0.8;
-            margin-top: 2px;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 0;
-            min-width: 220px;
-            background: #3f3f3f;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 8px;
-            display: none;
-            z-index: 20;
-            box-shadow: var(--shadow);
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .dropdown-menu a:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .dropdown.open .dropdown-menu {
-            display: block;
-        }
-
-        .option-modal {
-            position: fixed;
-            max-width: 260px;
-            background: #5b5b5b;
-            color: #ffffff;
-            border: 1px solid #4b4b4b;
-            border-radius: 10px;
-            padding: 10px 12px;
-            box-shadow: var(--shadow);
-            font-size: 13px;
-            line-height: 1.4;
-            z-index: 999;
-            display: none;
-            pointer-events: none;
-        }
-
         body.modal-open {
             overflow: hidden;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        .nav-right input {
-            background: #666;
-            border: none;
-            padding: 8px 10px;
-            border-radius: 6px;
-            color: #fff;
-            width: 160px;
-        }
-
-        .nav-right .sede {
-            font-weight: 700;
-            padding: 8px 10px;
-        }
-
-        .nav-right .seal {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
         }
 
         .hero {
@@ -294,61 +140,6 @@
             opacity: 1;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 46px 52px 54px;
-            color: #fff;
-            max-width: 620px;
-        }
-
-        .team-actions {
-            position: absolute;
-            right: 52px;
-            bottom: 28px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 70%;
-            max-width: 260px;
-            text-align: right;
-        }
-
-        .team-actions .btn {
-            width: 100%;
-        }
-
-        .hero h1 {
-            margin: 0 0 6px;
-            font-size: 36px;
-            font-weight: 800;
-        }
-
-        .hero .subtitle {
-            color: #f7d36b;
-            font-style: italic;
-            margin: 0 0 22px;
-            font-size: 18px;
-        }
-
-        .meta {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 26px;
-            line-height: 1.9;
-        }
-
-        .meta strong {
-            font-weight: 700;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
         .btn {
             display: inline-block;
             padding: 12px 18px;
@@ -356,26 +147,6 @@
             font-weight: 700;
             text-align: center;
             box-shadow: var(--shadow);
-        }
-
-        .btn-yellow {
-            background: var(--yellow);
-            color: #fff;
-            border: 2px solid #f8c753;
-        }
-
-        .btn-blue {
-            background: var(--blue);
-            color: #fff;
-            border: 2px solid #0059b0;
-        }
-
-        .acreditacion {
-            position: absolute;
-            right: 18px;
-            bottom: 18px;
-            width: 70px;
-            z-index: 3;
         }
 
         .section-nav {
@@ -460,16 +231,6 @@
         }
 
 
-        .tile-icon svg {
-            width: 34px;
-            height: 34px;
-            stroke: #ffffff;
-            fill: none;
-            stroke-width: 2.2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
         .tile-icon img {
             width: 100%;
             height: 100%;
@@ -481,69 +242,7 @@
             transform: scale(1.04);
         }
 
-        .section-nav .dropdown-menu {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            color: #374151;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 8px;
-            z-index: 5;
-        }
-
-        .section-nav .dropdown-menu a:hover {
-            background: #f3f4f6;
-        }
-
-        .section-emergencias {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 36px 24px 12px;
-        }
-
-        .emergencias-banner {
-            background: #b40000;
-            color: #fff;
-            border-radius: 18px;
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 20px;
-            font-weight: 800;
-            font-size: 22px;
-            box-shadow: var(--shadow);
-        }
-
-        .emergencias-banner span {
-            font-weight: 500;
-            font-size: 16px;
-            display: block;
-            opacity: 0.9;
-        }
-
-        .emergencias-card {
-            margin-top: 18px;
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 16px;
-            box-shadow: var(--shadow);
-            border: 4px solid #f0b000;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .emergencias-card iframe,
-        .emergencias-card object {
-            width: 100%;
-            height: 900px;
-            border-radius: 12px;
-            display: block;
-            border: none;
-        }
-
-        .emergencias-fab {
+        .emergency-fab {
             position: fixed;
             right: 18px;
             bottom: 18px;
@@ -563,7 +262,7 @@
             transition: bottom 0.2s ease, width 0.25s ease, height 0.25s ease, padding 0.25s ease, border-radius 0.25s ease, box-shadow 0.25s ease;
         }
 
-        body.news-active .emergencias-fab {
+        body.news-active .emergency-fab {
             width: 52px;
             height: 52px;
             padding: 0;
@@ -572,11 +271,11 @@
             gap: 0;
         }
 
-        body.footer-visible .emergencias-fab {
+        body.footer-visible .emergency-fab {
             bottom: 150px;
         }
 
-        body.news-active .emergencias-fab .fab-text {
+        body.news-active .emergency-fab .fab-label {
             display: none;
         }
 
@@ -586,43 +285,9 @@
             padding: 56px 24px;
         }
 
-        .split-row {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 56px 24px;
-            display: grid;
-            grid-template-columns: 1.0fr 1.0fr;
-            gap: 20px;
-            align-items: start;
-        }
-
-        .split-row .section {
-            max-width: none;
-            padding: 0;
-            margin: 0;
-        }
-
         /* Ajustes manuales por sección */
-        #que-es {
-            transform: translateX(var(--que-shift, 0px));
-        }
-
-        #objetivos {
-            transform: translateX(var(--servicios-shift, 0px));
-        }
-
-
-        .section-lineas {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 36px 24px;
-            background: #f5f7fb;
-        }
-
-        .anchor-target {
-            position: relative;
-            top: -80px;
-            height: 0;
+        #about-wellbeing {
+            transform: translateX(var(--about-shift, 0px));
         }
 
         .section h2 {
@@ -631,73 +296,34 @@
             color: var(--gray-900);
         }
 
-        .two-col {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 42px;
-            align-items: center;
-        }
-
-
-        .photo-card img {
-            border-radius: 22px;
-            box-shadow: var(--shadow);
-        }
-
-        .photo-card {
-            margin: 0;
-        }
-
-        .photo-card figcaption {
-            margin-top: 10px;
-            font-size: 13px;
-            color: var(--gray-500);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .photo-card .accent {
-            width: 16px;
-            height: 3px;
-            background: var(--yellow);
-            display: inline-block;
-        }
-
-        .text-block {
-            font-size: 16px;
-            line-height: 1.8;
-            text-align: center;
-        }
-
-        .section-objetivos h2 {
+        .section-objectives h2 {
             margin-bottom: 28px;
         }
 
-        .section-que-wrap {
+        .section-about-wrap {
             width: 100%;
             background: #ecf2fa;
             ;
 
         }
 
-        .section-servicios-wrap {
+        .section-services-wrap {
             width: 100%;
             background: #fffcf5;
         }
 
-        .section-objetivos-wrap {
+        .section-objectives-wrap {
             width: 100%;
             background: #f3f6fb;
         }
 
-        .section-articulos-wrap {
+        .section-news-wrap {
             width: 100%;
             background: #f3f6fb;
             padding-bottom: 80px;
         }
 
-        .section-que {
+        .section-about {
             background: transparent;
             color: inherit;
             border-radius: 0;
@@ -705,13 +331,13 @@
             max-width: 1200px;
         }
 
-        .section-que .section-inner {
+        .section-about .section-inner {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .section-que h2 {
+        .section-about h2 {
             color: var(--gray-900);
             font-size: 32px;
             display: inline-block;
@@ -719,19 +345,7 @@
             width: 100%;
         }
 
-        .section-que .text-block,
-        .section-que .photo-card figcaption {
-            color: var(--gray-500);
-        }
-
-        .section-que .text-block {
-            font-size: 12px;
-            line-height: 1.9;
-            max-width: none;
-            width: 100%;
-        }
-
-        .que-card {
+        .about-card {
             display: grid;
             grid-template-columns: 1fr 1.25fr;
             gap: 28px;
@@ -741,7 +355,7 @@
             margin-top: 24px;
         }
 
-        .que-image img {
+        .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -750,10 +364,10 @@
             box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
             position: relative;
             z-index: 2;
-            transform: translateX(var(--que-img-shift, 0px));
+            transform: translateX(var(--about-img-shift, 0px));
         }
 
-        .que-body {
+        .about-body {
             background: #d8d8d8;
             padding: 44px 46px;
             border-radius: 4px;
@@ -764,54 +378,26 @@
             z-index: 1;
         }
 
-        .que-body h3 {
+        .about-body h3 {
             margin: 0 0 10px;
             font-size: 18px;
         }
 
-        .que-body p {
+        .about-body p {
             margin: 0 0 12px;
             color: var(--gray-700);
             line-height: 1.7;
             font-size: 1.3 em !important;
         }
 
-        .que-body .link {
-            color: #00468a;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-
-        .que-content {
-            width: 200%;
-            max-width: 200%;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .section-que .text-block p {
-            margin-bottom: 14px;
-        }
-
-        .section-que .two-col {
-            gap: 50px;
-        }
-
-        .section-servicios {
+        .section-services {
             border-radius: 0;
             padding: 64px 0;
             max-width: none;
             position: relative;
         }
 
-        .section-servicios::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-        }
-
-        .section-servicios .section-inner {
+        .section-services .section-inner {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
@@ -819,7 +405,7 @@
             z-index: 1;
         }
 
-        .section-servicios h2 {
+        .section-services h2 {
             background: none;
             color: #ffffff;
             padding: 0;
@@ -829,88 +415,83 @@
         }
 
         /* Colores por sección (prioridad alta frente a plantilla) */
-        #bienestar-page main {
+        #wellbeing-page main {
             color: #1f2937;
         }
 
-        #bienestar-page .hero,
-        #bienestar-page .hero h1,
-        #bienestar-page .hero .subtitle,
-        #bienestar-page .hero .meta,
-        #bienestar-page .section-nav,
-        #bienestar-page .section-nav a {
+        #wellbeing-page .hero,
+        #wellbeing-page .section-nav,
+        #wellbeing-page .section-nav a {
             color: #ffffff;
         }
 
-        #bienestar-page .section-que,
-        #bienestar-page .section-que h2,
-        #bienestar-page .section-que .text-block,
-        #bienestar-page .section-que .photo-card figcaption {
+        #wellbeing-page .section-about,
+        #wellbeing-page .section-about h2 {
             color: #1f2937;
         }
 
-        #bienestar-page .section-servicios h2 {
+        #wellbeing-page .section-services h2 {
             color: #111827 !important;
         }
 
-        #bienestar-page .section-servicios h3,
-        #bienestar-page .section-servicios h4,
-        #bienestar-page .section-servicios p {
+        #wellbeing-page .section-services h3,
+        #wellbeing-page .section-services h4,
+        #wellbeing-page .section-services p {
             color: #111827;
         }
 
         /* Texto en tarjetas de Servicios */
-        .servicio-card .content h3,
-        .servicio-card .content p {
+        .service-card .content h3,
+        .service-card .content p {
             color: #111827 !important;
         }
 
-        .section-objetivos {
+        .section-objectives {
             background: transparent;
             padding: 64px 0;
         }
 
-        .section-objetivos .section-inner {
+        .section-objectives .section-inner {
             max-width: 1800px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .section-objetivos h2 {
+        .section-objectives h2 {
             color: #111827;
             margin-bottom: 18px;
         }
 
-        #bienestar-page .section-objetivos h2 {
+        #wellbeing-page .section-objectives h2 {
             color: #111827 !important;
         }
 
         /* Objetivos de Bienestar (tarjetas grandes estilo final) */
-        .section-objetivos-wrap {
+        .section-objectives-wrap {
             background: #f3f6fb;
             padding: 48px 0 72px;
         }
 
-        #objetivos-bienestar .section-inner {
+        #wellbeing-objectives .section-inner {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        #objetivos-bienestar h2 {
+        #wellbeing-objectives h2 {
             text-align: center;
             font-size: 34px;
             margin-bottom: 36px;
         }
 
-        #objetivos-bienestar .objetivos-grid {
+        #wellbeing-objectives .objectives-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 36px;
             align-items: stretch;
         }
 
-        #objetivos-bienestar .objetivo-card {
+        #wellbeing-objectives .objective-card {
             background: #ffffff;
             border-radius: 24px;
             padding: 34px 32px;
@@ -922,7 +503,7 @@
             min-height: 520px;
         }
 
-        #objetivos-bienestar .objetivo-icon {
+        #wellbeing-objectives .objective-icon {
             width: 72px;
             height: 72px;
             display: grid;
@@ -932,26 +513,26 @@
             border-radius: 0;
         }
 
-        #objetivos-bienestar .objetivo-icon img {
+        #wellbeing-objectives .objective-icon img {
             width: 52px;
             height: 52px;
             object-fit: contain;
         }
 
-        #objetivos-bienestar .objetivo-card h3 {
+        #wellbeing-objectives .objective-card h3 {
             margin: 0;
             font-size: 22px;
             color: #1f2937;
         }
 
-        #objetivos-bienestar .objetivo-card p {
+        #wellbeing-objectives .objective-card p {
             margin: 0;
             color: #4b5563;
             font-size: 16px;
             line-height: 1.8;
         }
 
-        #objetivos-bienestar .objetivo-btn {
+        #wellbeing-objectives .objective-btn {
             margin-top: auto;
             align-self: center;
             background: #0b3b7a;
@@ -966,21 +547,7 @@
             text-align: center;
         }
 
-        .acuerdo-btn {
-            margin-top: 8px;
-            align-self: flex-start;
-            background: #1d4e89;
-            color: #fff;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 12px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .acuerdos-accordion {
+        .agreements-accordion {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
@@ -991,7 +558,7 @@
             align-items: start;
         }
 
-        .acuerdo-item {
+        .agreement-item {
             border: 1px solid #e6ecf2;
             border-radius: 10px;
             background: #ffffff;
@@ -999,7 +566,7 @@
             align-self: start;
         }
 
-        .acuerdo-trigger {
+        .agreement-trigger {
             width: 100%;
             text-align: left;
             background: #f8fafc;
@@ -1014,73 +581,52 @@
             align-items: center;
         }
 
-        .acuerdo-trigger::after {
+        .agreement-trigger::after {
             content: "▾";
             font-size: 14px;
         }
 
-        .acuerdo-item.open .acuerdo-trigger::after {
+        .agreement-item.open .agreement-trigger::after {
             transform: rotate(180deg);
         }
 
-        .acuerdo-panel {
+        .agreement-panel {
             display: none;
             padding: 0;
             background: #ffffff;
         }
 
-        .acuerdo-item.open .acuerdo-panel {
+        .agreement-item.open .agreement-panel {
             display: block;
             padding: 8px 12px 12px;
         }
 
-        .acuerdo-panel ul {
+        .agreement-panel[hidden] {
+            display: none !important;
+        }
+
+        .agreement-panel ul {
             margin: 0;
             padding-left: 18px;
             display: grid;
             gap: 6px;
         }
 
-        .acuerdo-panel a {
+        .agreement-panel a {
             color: #0d3b7c;
             text-decoration: none;
             font-weight: 600;
             font-size: 15px;
         }
 
-        #bienestar-page .section-lineas,
-        #bienestar-page .section-lineas h2,
-        #bienestar-page .section-lineas .section-lead,
-        #bienestar-page .linea-btn {
-            color: #1f2937;
-        }
-
-        #bienestar-page .section-lineas h2,
-        #bienestar-page .section-lineas .section-lead {
-            text-align: center;
-        }
-
-        /* Quitar línea/underline global del template en el título principal */
-        #bienestar-page .hero h1 {
-            border-bottom: none !important;
-            text-decoration: none !important;
-            box-shadow: none !important;
-        }
-
-        #bienestar-page .hero h1::after,
-        #bienestar-page .hero h1::before {
-            content: none !important;
-            border: 0 !important;
-        }
-
-        .servicios-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 26px;
             margin-top: 24px;
         }
 
-        .servicio-card {
+        .service-card {
             position: relative;
             background: transparent;
             border-radius: 18px;
@@ -1092,14 +638,14 @@
             grid-template-columns: 1fr 1fr;
         }
 
-        .servicio-card img {
+        .service-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .servicio-card .content {
+        .service-card .content {
             position: static;
             background: transparent;
             color: #111827 !important;
@@ -1110,28 +656,28 @@
             opacity: 1;
         }
 
-        .servicio-card:nth-child(even) img {
+        .service-card:nth-child(even) img {
             order: 2;
         }
 
-        .servicio-card:nth-child(even) .content {
+        .service-card:nth-child(even) .content {
             order: 1;
         }
 
-        .servicio-card h3 {
+        .service-card h3 {
             margin: 0 0 10px;
             font-size: 27px;
             color: #fff !important;
         }
 
-        .servicio-card p {
+        .service-card p {
             margin: 0;
             font-size: 19px;
             color: #fff !important;
             line-height: 1.7;
         }
 
-        .servicio-more {
+        .service-more {
             margin-top: 14px;
             align-self: flex-start;
             background: #0d3b7c;
@@ -1143,7 +689,7 @@
             cursor: pointer;
         }
 
-        .servicio-modal {
+        .service-modal {
             position: fixed;
             inset: 0;
             background: rgba(15, 23, 42, 0.55);
@@ -1154,11 +700,11 @@
             padding: 24px;
         }
 
-        .servicio-modal.open {
+        .service-modal.open {
             display: flex;
         }
 
-        .servicio-panel {
+        .service-panel {
             width: min(900px, 95vw);
             max-height: 85vh;
             background: #fff;
@@ -1169,7 +715,7 @@
             flex-direction: column;
         }
 
-        .servicio-panel-header {
+        .service-panel-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1178,7 +724,7 @@
             color: #fff;
         }
 
-        .servicio-close {
+        .service-close {
             background: transparent;
             border: none;
             color: #fff;
@@ -1186,60 +732,11 @@
             cursor: pointer;
         }
 
-        .servicio-panel-body {
+        .service-panel-body {
             padding: 18px;
             overflow: auto;
             color: #1f2937;
             line-height: 1.6;
-        }
-
-        .section-perfil {
-            max-width: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 320px;
-        }
-
-        .perfil-panel {
-            position: relative;
-            overflow: hidden;
-            min-height: 320px;
-        }
-
-        .perfil-panel img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            inset: 0;
-        }
-
-        .perfil-panel .overlay {
-            position: absolute;
-            inset: 0;
-            opacity: 0.75;
-        }
-
-        .perfil-panel.aspirante .overlay {
-            background: #4e8fcc;
-        }
-
-        .perfil-panel.egresado .overlay {
-            background: #f9ae00;
-        }
-
-        .perfil-content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
-            font-size: 30px;
-            font-weight: 800;
         }
 
         .section-lead {
@@ -1249,306 +746,17 @@
             margin-bottom: 18px;
         }
 
-        .section-articulos h2,
-        .section-articulos .section-lead {
-            text-align: center !important;
-        }
-
-        .section-eventos h2,
-        .section-objetivos h2 {
-            text-align: center;
-        }
-
-        .lineas-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .linea {
-            background: #fff;
-            border-radius: 14px;
-            padding: 22px;
-            box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08);
-            border: 1px solid #eef0f2;
-            font-weight: 600;
-        }
-
-        .linea-btn {
-            background: #fff;
-            border-radius: 14px;
-            padding: 16px 18px;
-            box-shadow: 0 6px 12px rgba(15, 23, 42, 0.06);
-            border: 1px solid #eef0f2;
-            font-weight: 600;
-            text-align: left;
-            cursor: pointer;
-            width: 100%;
-            font-size: 15px;
-            display: grid;
-            grid-template-columns: 40px 1fr auto;
-            align-items: center;
-            gap: 12px;
-            transition: transform 200ms ease, box-shadow 200ms ease;
-            border-left: 4px solid var(--line-color, #94a3b8);
-        }
-
-        .linea-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 14px rgba(15, 23, 42, 0.08);
-        }
-
-        .linea-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: grid;
-            place-items: center;
-            background: color-mix(in srgb, var(--line-color, #94a3b8) 12%, #ffffff);
-            font-size: 18px;
-        }
-
-        .linea-title {
-            font-size: 15px;
-        }
-
-        .linea-btn::after {
-            content: "→";
-            opacity: 0.5;
-            font-size: 18px;
-        }
-
-        .linea-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1002;
-            padding: 18px;
-        }
-
-        .linea-modal.open {
-            display: flex;
-        }
-
-        .linea-modal .panel {
-            width: min(980px, 96vw);
-            max-height: 90vh;
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-            display: flex;
-            flex-direction: column;
-            border-top: 6px solid var(--line-color, #94a3b8);
-        }
-
-        .linea-modal .panel-header {
-            background: #ffffff;
-            color: var(--gray-900);
-            padding: 16px 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 800;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        .linea-modal .panel-header span {
-            font-size: 20px;
-        }
-
-        .linea-modal .panel-body {
-            padding: 20px 22px 26px;
-            overflow: auto;
-            background: #fcfcfd;
-        }
-
-        .linea-modal h3,
-        .linea-modal h4 {
-            color: var(--gray-900);
-            margin-top: 12px;
-            margin-bottom: 8px;
-        }
-
-        .linea-modal p,
-        .linea-modal li {
-            color: var(--gray-700);
-            line-height: 1.7;
-        }
-
-        .linea-modal table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
-        }
-
-        .linea-modal th,
-        .linea-modal td {
-            border: 1px solid #e5e7eb;
-            padding: 10px 12px;
-            text-align: left;
-        }
-
-        .linea-modal th {
-            background: #f3f4f6;
-        }
-
-        .linea-close {
-            background: #111827;
-            border: none;
-            color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .section-articulos {
+        .section-news {
             position: relative;
             margin-right: auto;
             padding: 0 32px;
-            transform: translateX(var(--articulos-shift, 0px));
+            transform: translateX(var(--news-shift, 0px));
 
         }
 
-        .section-articulos h2,
-        .section-articulos .section-lead {
+        .section-news h2,
+        .section-news .section-lead {
             text-align: left;
-        }
-
-        .section-eventos {
-            background: #f9fafb;
-            transform: translateX(var(--eventos-shift, 0px));
-        }
-
-        .calendar {
-            background: #fff;
-            border: 1px solid #eef0f2;
-            border-radius: 18px;
-            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-            padding: 20px 22px;
-        }
-
-        .calendar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .calendar-title {
-            font-weight: 800;
-            font-size: 20px;
-        }
-
-        .calendar-nav {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            border: 1px solid #e5e7eb;
-            background: #fff;
-            cursor: pointer;
-            font-size: 18px;
-            display: grid;
-            place-items: center;
-        }
-
-        .calendar-body {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 22px;
-        }
-
-        .calendar-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            font-size: 12px;
-            text-transform: uppercase;
-            color: var(--gray-500);
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-        }
-
-        .calendar-day {
-            border: 1px solid #eef0f2;
-            border-radius: 10px;
-            min-height: 44px;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
-            position: relative;
-            background: #fff;
-            font-weight: 600;
-        }
-
-        .calendar-day.is-other {
-            opacity: 0.4;
-        }
-
-        .calendar-day.has-event::after {
-            content: "";
-            position: absolute;
-            bottom: 6px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #f59e0b;
-        }
-
-        .calendar-day.is-selected {
-            border-color: #2563eb;
-            box-shadow: inset 0 0 0 1px #2563eb;
-        }
-
-        .calendar-events h3 {
-            margin: 0 0 10px;
-            font-size: 16px;
-        }
-
-        .calendar-events ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 8px;
-        }
-
-        .calendar-events li {
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 10px 12px;
-            background: #fff;
-            font-size: 14px;
-        }
-
-        .calendar-events li a {
-            color: #00468a;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .calendar-empty {
-            color: var(--gray-500);
-            font-size: 14px;
-            margin-top: 8px;
         }
 
         .carousel {
@@ -1651,191 +859,31 @@
             background: var(--yellow);
         }
 
-        .section-bienestar {
-            max-width: none;
-            padding: 0;
-            position: relative;
-            color: #fff;
-        }
-
-        .bienestar-bg {
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .bienestar-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.35);
-        }
-
-        .bienestar-content {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            padding: 32px 60px;
-        }
-
-        .bienestar-col {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            gap: 12px;
-            max-width: 420px;
-        }
-
-        .bienestar-col h3 {
-            font-size: 26px;
-            margin: 0;
-        }
-
-        .bienestar-col .line {
-            width: 80px;
-            height: 4px;
-            background: #fff;
-        }
-
-        .site-footer {
-            background: #5b5b5b;
-            color: #f3f4f6;
-        }
-
-        .footer-top {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 26px 24px;
-            display: grid;
-            grid-template-columns: 2fr 1.1fr 0.6fr;
-            gap: 24px;
-            font-size: 14px;
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .footer-links a {
-            display: block;
-            margin-bottom: 6px;
-            color: #f3f4f6;
-        }
-
-        .footer-contact h4 {
-            margin: 0 0 10px;
-        }
-
-        .footer-contact p {
-            margin: 0 0 6px;
-        }
-
-        .footer-logos {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-end;
-        }
-
-        .footer-logos img {
-            width: 70px;
-            height: auto;
-            opacity: 0.9;
-        }
-
         @media (max-width: 1024px) {
-            .main-nav {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-right {
-                justify-content: flex-start;
-            }
-
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-
             .hero {
                 min-height: 380px;
             }
 
-            .objetivos-grid,
-            .lineas-grid {
+            .objectives-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .section-perfil {
-                grid-template-columns: 1fr;
             }
 
             .carousel-card {
                 flex: 0 0 calc(50% - 10px);
             }
 
-            .bienestar-content {
-                grid-template-columns: 1fr;
-                padding: 24px;
-            }
-
-            .bienestar-bg {
-                height: 420px;
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 720px) {
-            .top-strip {
-                flex-direction: column;
-                gap: 6px;
-            }
-
             .hero {
                 border-radius: 0;
             }
 
-            .team-actions {
-                right: 24px;
-                bottom: 20px;
-            }
-
-            .hero-content {
-                padding: 30px 22px 40px;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-            }
-
-            .hero .subtitle {
-                font-size: 16px;
-            }
-
-            .section-nav .divider {
-                display: none;
-            }
-
-            .objetivos-grid,
-            .lineas-grid {
+            .objectives-grid {
                 grid-template-columns: 1fr;
             }
 
-            .split-row {
-                grid-template-columns: 1fr;
-            }
-
-            .servicios-grid {
+            .services-grid {
                 grid-auto-flow: column;
                 grid-auto-columns: 80%;
                 grid-template-columns: none;
@@ -1845,7 +893,7 @@
                 scroll-snap-type: x mandatory;
             }
 
-            .servicio-card {
+            .service-card {
                 scroll-snap-align: start;
             }
 
@@ -1857,17 +905,7 @@
                 display: none;
             }
 
-            .bienestar-bg {
-                height: 460px;
-            }
-
-            .emergencias-banner {
-                width: 100%;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .emergencias-fab {
+            .emergency-fab {
                 right: 12px;
                 bottom: 12px;
                 padding: 12px 14px;
@@ -1875,41 +913,16 @@
             }
         }
 
-        @media (max-width: 520px) {
-            .main-nav {
-                padding: 12px 16px;
-            }
-
-            .brand {
-                width: 100%;
-            }
-
-            .nav-right input {
-                width: 100%;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-            }
-
-            .primary-nav {
-                gap: 8px;
-            }
-
-            .dropdown-menu {
-                position: static;
-                transform: none;
-                min-width: unset;
-            }
-        }
     </style>
 </head>
 
 <body>
+    <a class="sr-only" href="#main-content">Saltar al contenido principal</a>
 
-    <div id="bienestar-page">
-        <main>
-            <section class="hero">
+    <div id="wellbeing-page">
+        <main id="main-content">
+            <h1 class="sr-only">Dirección de Bienestar - Facultad de Minas</h1>
+            <section class="hero" aria-label="Portada Bienestar">
                 <div class="hero-gallery" aria-hidden="true">
                     <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/hero.png" alt="" class="active" />
                     <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/acompanamiento.jpg" alt="" />
@@ -1921,20 +934,20 @@
                 <br>
             </section>
 
-            <section class="section-que-wrap">
-                <div class="section section-que" id="que-es">
-                    <h2>¿Qué es la Dirección de Bienestar?</h2>
+            <section class="section-about-wrap" aria-labelledby="about-wellbeing-title">
+                <div class="section section-about" id="about-wellbeing">
+                    <h2 id="about-wellbeing-title">¿Qué es la Dirección de Bienestar?</h2>
                     <br>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <div class="que-card">
-                        <div class="que-image" style="--que-img-shift: 55px;">
+                    <div class="about-card">
+                        <div class="about-image" style="--about-img-shift: 55px;">
                             <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Equipo_Bienestar_03.jpg"
                                 alt="Comunidad universitaria" />
                         </div>
-                        <div class="que-body">
+                        <div class="about-body">
                             <h3>Dirección de Bienestar</h3>
                             <p>La <strong>Dirección de Bienestar</strong> de la Facultad de Minas promueve el bienestar
                                 integral de la
@@ -1950,14 +963,14 @@
                 </div>
             </section>
 
-            <a class="emergencias-fab"
+            <a class="emergency-fab"
                 href="http://new-minas.medellin.unal.edu.co/index.php?option=com_content&view=article&layout=edit&id=2"
-                target="_blank" rel="noreferrer"><span class="fab-icon">🚑</span><span
-                    class="fab-text">Emergencias</span></a>
+                target="_blank" rel="noopener noreferrer"><span class="fab-icon" aria-hidden="true">🚑</span><span
+                    class="fab-label">Emergencias</span></a>
 
             <section class="section-nav-wrap">
-                <nav class="section-nav">
-                    <a class="nav-tile" href="#que-es"
+                <nav class="section-nav" aria-label="Navegación de Bienestar">
+                    <a class="nav-tile" href="#about-wellbeing"
                         style="--tile-color:#df959e; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/acompanamiento.jpg');">
                         <span class="tile-trigger">
                             <span class="tile-icon" aria-hidden="true">
@@ -1967,7 +980,7 @@
                             <span class="tile-label">Acompañamiento Integral</span>
                         </span>
                     </a>
-                    <a class="nav-tile" href="#objetivos"
+                    <a class="nav-tile" href="#student-services"
                         style="--tile-color:#edbf70; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/apoyo_economico%20.jpg');">
                         <span class="tile-trigger">
                             <span class="tile-icon" aria-hidden="true">
@@ -1977,7 +990,7 @@
                             <span class="tile-label">Gestión y Fomento Socioeconómico</span>
                         </span>
                     </a>
-                    <a class="nav-tile" href="#lineas"
+                    <a class="nav-tile" href="#legal-agreements"
                         style="--tile-color:#f18a5e; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/deporte_V2.png');">
                         <span class="tile-trigger">
                             <span class="tile-icon" aria-hidden="true">
@@ -1987,7 +1000,7 @@
                             <span class="tile-label">Actividad Física y Deporte</span>
                         </span>
                     </a>
-                    <a class="nav-tile" href="#bienestar"
+                    <a class="nav-tile" href="#wellbeing-objectives"
                         style="--tile-color:#8ab1cb; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/salud_V2.jpg'); --label-x:-6px;">
                         <span class="tile-trigger">
                             <span class="tile-icon" aria-hidden="true">
@@ -1997,7 +1010,7 @@
                             <span class="tile-label">Salud</span>
                         </span>
                     </a>
-                    <a class="nav-tile" href="#perfil"
+                    <a class="nav-tile" href="#news"
                         style="--tile-color:#a68fd2; --tile-bg:url('http://new-minas.medellin.unal.edu.co/images/Bienestar/cultura.jpg');">
                         <span class="tile-trigger">
                             <span class="tile-icon" aria-hidden="true">
@@ -2011,13 +1024,13 @@
             </section>
 
 
-            <section class="section-servicios-wrap">
-                <div class="section section-servicios" id="servicios-estudiantiles">
+            <section class="section-services-wrap" aria-labelledby="student-services-title">
+                <div class="section section-services" id="student-services">
                     <div class="section-inner">
-                        <h2>Servicios estudiantiles</h2>
+                        <h2 id="student-services-title">Servicios estudiantiles</h2>
 
-                        <div class="servicios-grid">
-                            <article class="servicio-card">
+                        <div class="services-grid">
+                            <article class="service-card">
                                 <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/reubicacion.jpg"
                                     alt="Servicio 1" />
                                 <div class="content">
@@ -2029,12 +1042,12 @@
                                         objetivo de ajustar su
                                         Puntaje Básico de Matrícula cuando su situación económica ha cambiado
                                         significativamente.</p>
-                                    <button class="servicio-more" type="button" data-servicio="reubicacion">Ver
+                                    <button class="service-more" type="button" data-service="socioeconomic-relocation">Ver
                                         más</button>
                                 </div>
                             </article>
 
-                            <article class="servicio-card">
+                            <article class="service-card">
                                 <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/casillero.jpg"
                                     alt="Servicio 2" />
                                 <div class="content">
@@ -2043,12 +1056,12 @@
                                         Campus del Río. La
                                         asignación es por orden de llegada según tu programa curricular, sujeto a
                                         disponibilidad.</p>
-                                    <button class="servicio-more" type="button" data-servicio="casillero">Ver
+                                    <button class="service-more" type="button" data-service="locker">Ver
                                         más</button>
                                 </div>
                             </article>
 
-                            <article class="servicio-card">
+                            <article class="service-card">
                                 <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/casillero.jpg"
                                     alt="Servicio 2" />
                                 <div class="content">
@@ -2061,7 +1074,7 @@
                                         por separado. Solo
                                         asegúrate de haber devuelto materiales, casilleros y no tener sanciones
                                         pendientes.</p>
-                                    <button class="servicio-more" type="button" data-servicio="pazysalvo">Ver
+                                    <button class="service-more" type="button" data-service="graduation-clearance">Ver
                                         más</button>
                                 </div>
                             </article>
@@ -2070,200 +1083,201 @@
                 </div>
             </section>
 
-            <div class="servicio-modal" id="servicio-modal" role="dialog" aria-modal="true"
-                aria-labelledby="servicio-modal-title">
-                <div class="servicio-panel">
-                    <div class="servicio-panel-header">
-                        <h3 id="servicio-modal-title">Detalle del servicio</h3>
-                        <button class="servicio-close" type="button" id="servicio-close">×</button>
+            <div class="service-modal" id="service-modal" role="dialog" aria-modal="true" aria-hidden="true"
+                aria-labelledby="service-modal-title" aria-describedby="service-modal-body">
+                <div class="service-panel" role="document">
+                    <div class="service-panel-header">
+                        <h3 id="service-modal-title">Detalle del servicio</h3>
+                        <button class="service-close" type="button" id="service-close"
+                            aria-label="Cerrar detalle del servicio">×</button>
                     </div>
-                    <div class="servicio-panel-body" id="servicio-modal-body"></div>
+                    <div class="service-panel-body" id="service-modal-body"></div>
                 </div>
             </div>
 
-            <section class="section-objetivos-wrap">
-                <div class="section section-objetivos" id="acuerdos-legales">
+            <section class="section-objectives-wrap" aria-labelledby="legal-agreements-title">
+                <div class="section section-objectives" id="legal-agreements">
                     <div class="section-inner">
-                        <h2>Acuerdos legales</h2>
-                        <div class="acuerdos-accordion">
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 1</button>
-                                <div class="acuerdo-panel">
+                        <h2 id="legal-agreements-title">Acuerdos legales</h2>
+                        <div class="agreements-accordion">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 1</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 2</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 2</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 3</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 3</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 4</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 4</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 5</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 5</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 6</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 6</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 7</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 7</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 8</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 8</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 9</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 9</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 10</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 10</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 11</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 11</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 12</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 12</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 13</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 13</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 14</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 14</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 15</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 15</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 16</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 16</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 17</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 17</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 18</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 18</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 19</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 19</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 20</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 20</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 21</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 21</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 22</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 22</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 23</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 23</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 24</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 24</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 25</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 25</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
                             </div>
-                            <div class="acuerdo-item">
-                                <button class="acuerdo-trigger" type="button" aria-expanded="false">Acuerdo 26</button>
-                                <div class="acuerdo-panel">
+                            <div class="agreement-item">
+                                <button class="agreement-trigger" type="button" aria-expanded="false">Acuerdo 26</button>
+                                <div class="agreement-panel">
                                     <p>Resumen breve del acuerdo y su alcance.</p>
                                     <a href="#" target="_blank" rel="noreferrer">Ver PDF</a>
                                 </div>
@@ -2273,13 +1287,13 @@
                 </div>
             </section>
 
-            <section class="section-objetivos-wrap">
-                <div class="section section-objetivos" id="objetivos-bienestar">
+            <section class="section-objectives-wrap" aria-labelledby="wellbeing-objectives-title">
+                <div class="section section-objectives" id="wellbeing-objectives">
                     <div class="section-inner">
-                        <h2>Objetivos de Bienestar</h2>
-                        <div class="objetivos-grid">
-                            <article class="objetivo-card">
-                                <div class="objetivo-icon">
+                        <h2 id="wellbeing-objectives-title">Objetivos de Bienestar</h2>
+                        <div class="objectives-grid">
+                            <article class="objective-card">
+                                <div class="objective-icon">
                                     <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/reubicacion_socioeconomica.png"
                                         alt="Reubicación Socioeconómica" />
                                 </div>
@@ -2287,38 +1301,38 @@
                                 <p>Reubicación Socioeconómica es un proceso mediante el cual un estudiante puede
                                     solicitar la revisión y actualización de su perfil socioeconómico ante el Comité de
                                     Matrícula.</p>
-                                <button class="objetivo-btn" type="button">Ver más</button>
+                                <button class="objective-btn" type="button">Ver más</button>
                             </article>
 
-                            <article class="objetivo-card">
-                                <div class="objetivo-icon">
+                            <article class="objective-card">
+                                <div class="objective-icon">
                                     <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/casillero.png"
                                         alt="Casillero" />
                                 </div>
                                 <h3>Casillero</h3>
                                 <p>En la Facultad de Minas puedes solicitar un casillero en el Campus Robledo o Campus
                                     del Río. La asignación es por orden de llegada según tu programa curricular.</p>
-                                <button class="objetivo-btn" type="button">Ver más</button>
+                                <button class="objective-btn" type="button">Ver más</button>
                             </article>
 
-                            <article class="objetivo-card">
-                                <div class="objetivo-icon">
+                            <article class="objective-card">
+                                <div class="objective-icon">
                                     <img src="http://new-minas.medellin.unal.edu.co/images/Bienestar/Iconos/paz_y_salvo_para_graduacion.png"
                                         alt="Paz y salvo para graduación" />
                                 </div>
                                 <h3>Paz y salvo para graduación</h3>
                                 <p>Para graduarte en la Facultad de Minas debes estar a paz y salvo con todas las
                                     dependencias, incluyendo Biblioteca y Bienestar Universitario.</p>
-                                <button class="objetivo-btn" type="button">Ver más</button>
+                                <button class="objective-btn" type="button">Ver más</button>
                             </article>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="section-articulos-wrap">
-                <div class="section section-articulos full-width" id="articulos">
-                    <h2>Noticias y Actividades</h2>
+            <section class="section-news-wrap" aria-labelledby="news-title">
+                <div class="section section-news full-width" id="news">
+                    <h2 id="news-title">Noticias y Actividades</h2>
                     <p class="section-lead">Conoce las actividades y estrategias que fortalecen el bienestar en la
                         Facultad de
                         Minas.
@@ -2406,6 +1420,7 @@
             }
 
             function renderCards() {
+                if (!track) return;
                 track.innerHTML = "";
                 articles.forEach((item) => {
                     const card = document.createElement("article");
@@ -2422,6 +1437,7 @@
             }
 
             function renderDots() {
+                if (!dots) return;
                 dots.innerHTML = "";
                 const perView = getPerView();
                 const pages = Math.ceil(articles.length / perView);
@@ -2436,6 +1452,7 @@
             }
 
             function updateDots() {
+                if (!dots) return;
                 const dotButtons = dots.querySelectorAll("button");
                 dotButtons.forEach((dot, i) => {
                     dot.classList.toggle("active", i === index);
@@ -2443,8 +1460,11 @@
             }
 
             function updateCarousel() {
+                if (!track) return;
                 const perView = getPerView();
-                const cardWidth = track.querySelector(".carousel-card").offsetWidth;
+                const firstCard = track.querySelector(".carousel-card");
+                if (!firstCard) return;
+                const cardWidth = firstCard.offsetWidth;
                 const gap = 20;
                 const offset = (cardWidth + gap) * index * perView;
                 track.style.transform = `translateX(-${offset}px)`;
@@ -2475,17 +1495,21 @@
                 }
             }
 
-            prevBtn.addEventListener("click", () => {
-                index -= 1;
-                clampIndex();
-                updateCarousel();
-            });
+            if (prevBtn) {
+                prevBtn.addEventListener("click", () => {
+                    index -= 1;
+                    clampIndex();
+                    updateCarousel();
+                });
+            }
 
-            nextBtn.addEventListener("click", () => {
-                index += 1;
-                clampIndex();
-                updateCarousel();
-            });
+            if (nextBtn) {
+                nextBtn.addEventListener("click", () => {
+                    index += 1;
+                    clampIndex();
+                    updateCarousel();
+                });
+            }
 
             window.addEventListener("resize", () => {
                 renderDots();
@@ -2493,10 +1517,12 @@
                 updateCarousel();
             });
 
-            renderCards();
-            renderDots();
-            updateCarousel();
-            startAutoSlide();
+            if (track && dots) {
+                renderCards();
+                renderDots();
+                updateCarousel();
+                startAutoSlide();
+            }
 
             const carousel = document.querySelector(".carousel");
             if (carousel) {
@@ -2506,35 +1532,36 @@
                 carousel.addEventListener("focusout", startAutoSlide);
             }
 
-            const dropdowns = document.querySelectorAll(".dropdown-trigger");
-            dropdowns.forEach((trigger) => {
-                trigger.addEventListener("click", () => {
-                    const parent = trigger.parentElement;
-                    const wasOpen = parent.classList.contains("open");
-                    document.querySelectorAll(".dropdown.open").forEach((d) => d.classList.remove("open"));
-                    document.querySelectorAll(".dropdown-trigger").forEach((t) => t.setAttribute("aria-expanded", "false"));
-                    if (!wasOpen) {
-                        parent.classList.add("open");
-                        trigger.setAttribute("aria-expanded", "true");
-                    }
-                });
-            });
+            const serviceModal = document.getElementById("service-modal");
+            const serviceBody = document.getElementById("service-modal-body");
+            const serviceTitle = document.getElementById("service-modal-title");
+            const serviceClose = document.getElementById("service-close");
+            let lastFocusedElement = null;
 
-            document.addEventListener("click", (e) => {
-                const isDropdown = e.target.closest(".dropdown");
-                if (!isDropdown) {
-                    document.querySelectorAll(".dropdown.open").forEach((d) => d.classList.remove("open"));
-                    document.querySelectorAll(".dropdown-trigger").forEach((t) => t.setAttribute("aria-expanded", "false"));
+            function openServiceModal() {
+                if (!serviceModal) return;
+                lastFocusedElement = document.activeElement;
+                serviceModal.classList.add("open");
+                serviceModal.setAttribute("aria-hidden", "false");
+                document.body.classList.add("modal-open");
+                if (serviceClose) {
+                    serviceClose.focus();
                 }
-            });
+            }
 
-            const servicioModal = document.getElementById("servicio-modal");
-            const servicioBody = document.getElementById("servicio-modal-body");
-            const servicioTitle = document.getElementById("servicio-modal-title");
-            const servicioClose = document.getElementById("servicio-close");
+            function closeServiceModal() {
+                if (!serviceModal) return;
+                serviceModal.classList.remove("open");
+                serviceModal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("modal-open");
+                if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+                    lastFocusedElement.focus();
+                }
+            }
 
-            const servicioContent = {
-                reubicacion: {
+            const serviceContent = {
+                "socioeconomic-relocation": {
+                    title: "Reubicación Socioeconómica",
                     html: `
             <p>El estudio de Reubicación Socioeconómica es una actividad del Comité de Matrícula, adscrito a la
             División de Registro y Matrícula, el cual establece fechas calendario por período académico. El
@@ -2561,7 +1588,8 @@
             su situación particular.</p>
           `
                 },
-                casillero: {
+                "locker": {
+                    title: "Casillero",
                     html: `
             <p>La Facultad de Minas permite a los estudiantes solicitar el servicio de casillero en el Campus
             Robledo y Campus del Río. El proceso de asignación se realiza por solicitud del estudiante, respetando
@@ -2587,7 +1615,8 @@
             programa curricular y una breve justificación del uso pretendido.</p>
           `
                 },
-                pazysalvo: {
+                "graduation-clearance": {
+                    title: "Paz y salvo para graduación",
                     html: `
             <p>Para graduarse en la Facultad de Minas, es obligatorio estar a paz y salvo con todas las dependencias,
             incluyendo Biblioteca, Repositorio Institucional, y Bienestar Universitario (casilleros, préstamos). La
@@ -2596,7 +1625,7 @@
             <p><strong>Paz y Salvo Bienestar Universitario (Facultad de Minas):</strong></p>
             <ul>
               <li><strong>Gestión:</strong> Las dependencias envían reportes de estado directamente a la Secretaría de la Facultad de Minas.</li>
-              <li><strong>Obligaciones:</strong> Deben estar al día en la devolución de materiales, casilleros (lockers) y no tener sanciones.</li>
+              <li><strong>Obligaciones:</strong> Deben estar al día en la devolución de materiales, casilleros y no tener sanciones.</li>
               <li><strong>Atención:</strong> Para dudas o trámites, la dirección de Bienestar está en el Campus Robledo, Bloque M4, Oficina 002.</li>
               <li><strong>Contacto:</strong> Correo electrónico fmvibien_med@unal.edu.co o teléfono 4255032.</li>
             </ul>
@@ -2604,147 +1633,102 @@
                 }
             };
 
-            document.querySelectorAll(".servicio-more").forEach((btn) => {
+            document.querySelectorAll(".service-more").forEach((btn) => {
                 btn.addEventListener("click", () => {
-                    const key = btn.getAttribute("data-servicio");
-                    const data = servicioContent[key];
+                    const key = btn.getAttribute("data-service");
+                    const data = serviceContent[key];
                     if (!data) return;
-                    servicioTitle.textContent = data.title;
-                    servicioBody.innerHTML = data.html;
-                    servicioModal.classList.add("open");
-                    document.body.classList.add("modal-open");
+                    if (serviceTitle) serviceTitle.textContent = data.title;
+                    if (serviceBody) serviceBody.innerHTML = data.html;
+                    openServiceModal();
                 });
             });
 
-            document.querySelectorAll(".acuerdo-trigger").forEach((trigger) => {
+            document.querySelectorAll(".agreement-trigger").forEach((trigger) => {
                 trigger.addEventListener("click", () => {
-                    const item = trigger.closest(".acuerdo-item");
+                    const item = trigger.closest(".agreement-item");
                     if (!item) return;
-                    const container = item.closest(".acuerdos-accordion");
+                    const container = item.closest(".agreements-accordion");
                     if (container) {
-                        container.querySelectorAll(".acuerdo-item.open").forEach((openItem) => {
+                        container.querySelectorAll(".agreement-item.open").forEach((openItem) => {
                             if (openItem !== item) {
                                 openItem.classList.remove("open");
-                                const btn = openItem.querySelector(".acuerdo-trigger");
+                                const btn = openItem.querySelector(".agreement-trigger");
                                 if (btn) btn.setAttribute("aria-expanded", "false");
+                                const panel = openItem.querySelector(".agreement-panel");
+                                if (panel) panel.hidden = true;
                             }
                         });
                     }
                     const willOpen = !item.classList.contains("open");
                     item.classList.toggle("open");
                     trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+                    const currentPanel = item.querySelector(".agreement-panel");
+                    if (currentPanel) currentPanel.hidden = !willOpen;
                 });
             });
 
-            if (servicioClose) {
-                servicioClose.addEventListener("click", () => {
-                    servicioModal.classList.remove("open");
-                    document.body.classList.remove("modal-open");
+            if (serviceClose) {
+                serviceClose.addEventListener("click", () => {
+                    closeServiceModal();
                 });
             }
 
-            if (servicioModal) {
-                servicioModal.addEventListener("click", (e) => {
-                    if (e.target === servicioModal) {
-                        servicioModal.classList.remove("open");
-                        document.body.classList.remove("modal-open");
+            if (serviceModal) {
+                serviceModal.addEventListener("click", (e) => {
+                    if (e.target === serviceModal) {
+                        closeServiceModal();
+                    }
+                });
+
+                serviceModal.addEventListener("keydown", (e) => {
+                    if (e.key !== "Tab") return;
+                    const focusableElements = serviceModal.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    if (!focusableElements.length) return;
+                    const first = focusableElements[0];
+                    const last = focusableElements[focusableElements.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
                     }
                 });
             }
 
-            const modal = document.createElement("div");
-            modal.className = "option-modal";
-            modal.id = "option-tooltip";
-            modal.setAttribute("role", "tooltip");
-            document.body.appendChild(modal);
-
-            function showModal(target) {
-                const text = target.getAttribute("data-desc");
-                if (!text) return;
-                target.setAttribute("aria-describedby", "option-tooltip");
-                modal.textContent = text;
-                modal.style.display = "block";
-                document.body.classList.add("modal-open");
-
-                const rect = target.getBoundingClientRect();
-                const modalRect = modal.getBoundingClientRect();
-                const top = rect.top - modalRect.height - 10;
-                const left = rect.left;
-
-                modal.style.top = `${Math.max(8, top)}px`;
-                modal.style.left = `${Math.max(8, left)}px`;
-            }
-
-            function hideModal() {
-                modal.style.display = "none";
-                document.querySelectorAll(".dropdown-menu a[aria-describedby=\"option-tooltip\"]")
-                    .forEach((el) => el.removeAttribute("aria-describedby"));
-                document.body.classList.remove("modal-open");
-            }
-
-            document.querySelectorAll(".dropdown-menu a").forEach((item) => {
-                item.addEventListener("mouseenter", () => showModal(item));
-                item.addEventListener("mouseleave", hideModal);
-                item.addEventListener("focus", () => showModal(item));
-                item.addEventListener("blur", hideModal);
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && serviceModal && serviceModal.classList.contains("open")) {
+                    closeServiceModal();
+                }
             });
 
-            const lineaModal = document.getElementById("linea-modal");
-            const lineaModalTitle = document.getElementById("linea-modal-title");
-            const lineaModalBody = document.getElementById("linea-modal-body");
-            const lineaClose = document.getElementById("linea-close");
-            const lineaPanel = document.querySelector(".linea-modal .panel");
-            let lastFocusedElement = null;
-
-            function openLineaModal(btn) {
-                lastFocusedElement = document.activeElement;
-                const templateId = btn.getAttribute("data-template");
-                const tpl = templateId ? document.getElementById(templateId) : null;
-                const color = btn.getAttribute("data-color");
-                if (tpl) {
-                    const title = tpl.getAttribute("data-title") || "Detalle";
-                    lineaModalTitle.textContent = title;
-                    lineaModalBody.innerHTML = tpl.innerHTML;
-                } else {
-                    lineaModalTitle.textContent = "Detalle";
-                    lineaModalBody.textContent = "Contenido pendiente.";
-                }
-                if (color && lineaPanel) {
-                    lineaPanel.style.setProperty("--line-color", color);
-                }
-                lineaModal.classList.add("open");
-                document.body.classList.add("modal-open");
-                lineaClose.focus();
-            }
-
-            function closeLineaModal() {
-                lineaModal.classList.remove("open");
-                document.body.classList.remove("modal-open");
-                if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-                    lastFocusedElement.focus();
-                }
-            }
-
-            document.querySelectorAll(".linea-btn").forEach((btn) => {
-                btn.addEventListener("click", () => openLineaModal(btn));
-            });
-
-            lineaClose.addEventListener("click", closeLineaModal);
-            lineaModal.addEventListener("click", (e) => {
-                if (e.target === lineaModal) closeLineaModal();
+            document.querySelectorAll(".agreement-item").forEach((item, index) => {
+                const trigger = item.querySelector(".agreement-trigger");
+                const panel = item.querySelector(".agreement-panel");
+                if (!trigger || !panel) return;
+                const triggerId = `agreement-trigger-${index + 1}`;
+                const panelId = `agreement-panel-${index + 1}`;
+                trigger.id = triggerId;
+                trigger.setAttribute("aria-controls", panelId);
+                panel.id = panelId;
+                panel.setAttribute("role", "region");
+                panel.setAttribute("aria-labelledby", triggerId);
+                panel.hidden = true;
             });
 
             document.addEventListener("DOMContentLoaded", () => {
                 const footer = document.getElementById("footer");
-                const btn = document.querySelector(".emergencias-fab");
-                const news = document.getElementById("articulos");
-                if (!footer || !btn) return;
-
-                const obs = new IntersectionObserver((entries) => {
-                    document.body.classList.toggle("footer-visible", entries[0].isIntersecting);
-                }, { threshold: 0.01 });
-
-                obs.observe(footer);
+                const btn = document.querySelector(".emergency-fab");
+                const news = document.getElementById("news");
+                if (footer && btn) {
+                    const obs = new IntersectionObserver((entries) => {
+                        document.body.classList.toggle("footer-visible", entries[0].isIntersecting);
+                    }, { threshold: 0.01 });
+                    obs.observe(footer);
+                }
 
                 if (news) {
                     const setNewsState = () => {
@@ -2763,13 +1747,6 @@
                     window.addEventListener("resize", setNewsState);
                 }
             });
-
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && lineaModal.classList.contains("open")) {
-                    closeLineaModal();
-                }
-            });
-
 
         </script>
     </div>
